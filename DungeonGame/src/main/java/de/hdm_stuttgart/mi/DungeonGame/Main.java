@@ -1,17 +1,18 @@
 package de.hdm_stuttgart.mi.DungeonGame;
 
+//Import statements
+
+
 /**
- * A simple HelloWorld style application.
+ * A small DungeonGame project. Class containing the main entry point for the game.
  */
-
 public class Main {
-
     /**
-     * Your application's main entry point.
+     * The main entry point for the DungeonGame.
      *
-     * @param args Yet unused
+     * @param args Startup arguments provided at application startup
      */
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
 
     }
 }
