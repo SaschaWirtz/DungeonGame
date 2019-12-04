@@ -19,13 +19,17 @@ Andreas G. | Moritz W. | Lara B. | Sascha W. | Anonymous
 * classes: PascalCase
 * methods, variables: camelCase
 * const: CAPITAL_LETTERS
-* if {<br/>
-  ...<br/>
-  }<br/>
-* switch() {<br/>
-  case 1:<br/>
-  statement;<br/>
-  break;<br/>
+* if(condition) {<br/>
+	...<br/>
+  } else if(condition) {<br/>
+	...<br/>
+  } else {<br/>
+	...<br/>
+  }
+* switch(object) {<br/>
+	case 1:<br/>
+		statement;<br/>
+		break;<br/>
   }<br/>
 * ToDo-comments: //ToDo: The remaining things to to.
 
