@@ -38,6 +38,6 @@ Every file (class, pom.xml, .gitignore) should begin with a file description com
 It should contain the author, last edit timestamp and the last editors name.
 
 ## Git
-* Mathods with open changes or implementations should be commented before pushing 
-the last commmit.
+* Methods with open changes or implementations should be commented before pushing 
+the last commit.
 * For every new functionality there should be a new branch to work on.
