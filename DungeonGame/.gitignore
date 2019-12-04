@@ -58,11 +58,11 @@ hs_err_pid*
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
-# *.iml
-# *.ipr
+.idea/modules.xml
+.idea/*.iml
+.idea/modules
+*.iml
+*.ipr
 
 # CMake
 cmake-build-*/
@@ -106,4 +106,4 @@ dependency-reduced-pom.xml
 *.log
 
 #Ignoring the users DevConsole
-src/test/java/de/hdm_stuttgart/mi/DevConsole/*
+/src/test/java/de/hdm_stuttgart/mi/DevConsole/

@@ -13,6 +13,6 @@ public class Main {
      * @param args The arguments provided by user at startup.
      */
     public static void main(String[] args) {
-        System.out.println("Test");
+
     }
 }
