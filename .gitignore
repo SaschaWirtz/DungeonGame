@@ -1,3 +1,10 @@
+##################################################
+# The global gitignore file for OS specific
+# files and paths
+# author: Andreas G.
+# last edit / by: 2019-12-04 / Andreas G.
+##################################################
+
 # MacOS
 # General
 .DS_Store
