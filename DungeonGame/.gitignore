@@ -1,11 +1,13 @@
+#The standard content for IDEA projects
 /target/
 /.settings/
 .classpath
 .project
 dependency-reduced-pom.xml
 *.log
+
 ############################################################
-# Blame Andreas G if this creates problems 
+# Blame Andreas G if this causes problems 
 
 # Compiled class file
 *.class
@@ -107,3 +109,6 @@ fabric.properties
 .project
 dependency-reduced-pom.xml
 *.log
+
+#Ignoring the users DevConsole
+/src/test/java/de/hdm_stuttgart/mi/DevConsole/*
