@@ -1,3 +1,11 @@
+/*
+ * Main.java
+ *
+ * All unit tests for the Main class in the main project.
+ *
+ * author: Andreas G.
+ * last edit / by: 2019-12-04 / Andreas G.
+ */
 package de.hdm_stuttgart.mi.DungeonGameTester;
 
 //Import statements
