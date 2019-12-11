@@ -4,7 +4,7 @@
  * The main rendering class printing the current screen with it's content.
  *
  * author: Andreas G.
- * last edit / by: 2019-12-09 / Andreas G.
+ * last edit / by: 2019-12-11 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
@@ -38,6 +38,12 @@ public class ScreenRenderer {
         } catch (Exception e) {
             //ToDo: Creating a logical and secure catch routine
         }
+    }
+
+    //Debug
+    public void printResolution() {
+        System.out.println(screenBuffer.length);
+        System.out.println(screenBuffer[0].length);
     }
 
     /**

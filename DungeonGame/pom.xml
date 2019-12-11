@@ -2,7 +2,7 @@
   Maven project configuration file containing project information and dependencies.
 
   author: Moritz W.
-  last edit / by: 2019-12-09 / Andreas G.
+  last edit / by: 2019-12-11 / Sascha W.
 -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -38,6 +38,13 @@
       <groupId>org.jline</groupId>
       <artifactId>jline</artifactId>
       <version>3.13.2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.fusesource.jansi/jansi -->
+    <dependency>
+      <groupId>org.fusesource.jansi</groupId>
+      <artifactId>jansi</artifactId>
+      <version>1.18</version>
     </dependency>
   </dependencies>
 
