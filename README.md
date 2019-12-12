@@ -44,19 +44,19 @@ the last commit.
 
 ## Package structure
 <pre>
-de.hdm_stuttgart.mi.DungeonGame<br>
-|<br>
-|---Graphics<br>
-|---Helper<br>
-|   |<br>
-|   |---Grapics<br>
-|   |---Logics<br>
-|       |<br>
-|       |---Actors<br>
-|       |---Stages<br>
-|<br>
-|---Logics<br>
-    |<br>
-    |---Actors<br>
-    |---Stages<br>
+de.hdm_stuttgart.mi.DungeonGame
+|
+|---Graphics
+|---Helper
+|   |
+|   |---Grapics
+|   |---Logics
+|       |
+|       |---Actors
+|       |---Stages
+|
+|---Logics
+    |
+    |---Actors
+    |---Stages
 </pre>
