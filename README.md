@@ -47,6 +47,10 @@ the last commit.
 de.hdm_stuttgart.mi.DungeonGame
 |
 |---Graphics
+|   |
+|   |---Interfaces
+|   |---Enums
+|
 |---Helper
 |   |
 |   |---Grapics
@@ -57,6 +61,15 @@ de.hdm_stuttgart.mi.DungeonGame
 |
 |---Logics
     |
+    |---Interfaces
+    |---Enum
     |---Actors
+    |   |
+    |   |---Interfaces
+    |   |---Enum
+    |
     |---Stages
+        |
+        |---Interfaces
+        |---Enum
 </pre>
