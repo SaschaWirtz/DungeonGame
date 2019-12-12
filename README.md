@@ -43,18 +43,20 @@ the last commit.
 * For every new functionality there should be a new branch to work on.
 
 ## Package structure
-de.hdm_stuttgart.mi.DungeonGame
-|
-|---Graphics
-|---Helper
-|   |
-|   |---Grapics
-|   |---Logics
-|       |
-|       |---Actors
-|       |---Stages
-|
-|---Logics
-    |
-    |---Actors
-    |---Stages
+<pre>
+de.hdm_stuttgart.mi.DungeonGame<br>
+|<br>
+|---Graphics<br>
+|---Helper<br>
+|   |<br>
+|   |---Grapics<br>
+|   |---Logics<br>
+|       |<br>
+|       |---Actors<br>
+|       |---Stages<br>
+|<br>
+|---Logics<br>
+    |<br>
+    |---Actors<br>
+    |---Stages<br>
+</pre>
