@@ -41,3 +41,20 @@ It should contain the author, last edit timestamp and the last editors name.
 * Methods with open changes or implementations should be commented before pushing 
 the last commit.
 * For every new functionality there should be a new branch to work on.
+
+## Package structure
+de.hdm_stuttgart.mi.DungeonGame
+|
+|---Graphics
+|---Helper
+|   |
+|   |---Grapics
+|   |---Logics
+|       |
+|       |---Actors
+|       |---Stages
+|
+|---Logics
+    |
+    |---Actors
+    |---Stages
