@@ -13,7 +13,7 @@ package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum;
 /**
  * List of usable FieldTypes (Wall, Water, ...).
  */
-public enum FieldTypes {
+public enum FieldType {
     /**
      * Wall is a FiledType which shapes the basic shape of the Field and creates simple walls to interfere with the players path.
      */
@@ -28,7 +28,17 @@ public enum FieldTypes {
      * Water is a FieldType which creates another interference for the player.
      * Only used in prebuild Fields.
      */
-    Water(false);
+    Water(false),
+
+    /**
+     * Door is a FieldType which is accessible and leads to a Field change.
+     */
+    Door(true),
+
+    /**
+     * Stairs are a FieldType which are accessible and are leading to a Field change.
+     */
+    Stairs(true);
 
     /**
      * Adding a boolean to check the FieldTypes accessibility.
@@ -40,7 +50,7 @@ public enum FieldTypes {
      *
      * @param walkable setting if its possible to walk on this particular FieldType.
      */
-    private FieldTypes(boolean walkable){
+    private FieldType(boolean walkable){
         this.walkable = walkable;
     }
 }
