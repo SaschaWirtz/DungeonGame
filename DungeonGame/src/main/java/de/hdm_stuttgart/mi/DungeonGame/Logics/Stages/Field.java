@@ -21,25 +21,54 @@ public class Field {
     //Attributes
 
     //random FieldType hight
-    int hight = (int) Math.random() * 45 + 5;
+    private final int HIGHT = (int) (Math.random() * 45) + 5;
     //random FieldType width
-    int width = (int) Math.random() * 45 + 5;
+    private final int WIDTH = (int) (Math.random() * 45) + 5;
     //new entry direction
-    Directions EntryDirection;
+    private Directions EntryDirection;
+    //random roomType
+    private final int ROOMTYPE = (int) Math.random() * 100;
 
     /**
-     * Constructor to feed new EntryDirection.
+     * Constructor to Field.
      *
      * @param EntryDirection is the new direction for entry position.
      */
-    public Field(Directions EntryDirection){
+    public Field(Directions EntryDirection) {
         this.EntryDirection = EntryDirection;
+
+        //Fill room with Floor
+        for(int hight = 0; hight < (room.length - 1); hight++) {
+            for(int width = 1; width < (room[0].length - 1); width++) {
+                room[hight][width] = FieldType.Floor;
+            }
+        }
+
+        //Place top wall
+        for(int width = 1; width < room[0].length; width++) {
+            room[0][width] = FieldType.Wall;
+        }
+
+        //Place left wall
+        for(int higth = 1; higth < room.length - 1; higth++) {
+            room[higth][room[0].length - 1] = FieldType.Wall;
+        }
+
+        //Place bottom wall
+        for(int hight = 0; hight < room.length - 1; hight++) {
+            room[hight][0] = FieldType.Wall;
+        }
+
+        //Place right wall
+        for(int width = 0; width < room[0].length; width++) {
+            room[room.length - 1][width] = FieldType.Wall;
+        }
     }
 
     /**
      * FieldType is the main array in which the end Field will be saved.
      */
-    FieldType[][] room = new FieldType[hight][width];
+    FieldType[][] room = new FieldType[HIGHT][WIDTH];
 
     /**
      * Passes on the EntryDirection for the next field.

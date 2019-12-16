@@ -1,7 +1,7 @@
 /*
  * Directions.java
  *
- * List of Directions for exit, entry and Player positioning.
+ * List of Directions for exit, entry, Player positioning and room creation.
  *
  * author: Sascha W.
  * last edit / by: 2019-12-16 / Sascha W.
