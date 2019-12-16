@@ -88,18 +88,6 @@ public class Field {
         EntryDirection = entryDirection;
     }
 
-    /*
-    public int getSpawnXCoordinate(){
-        //ToDo: Spawn x-coordinate in relation to door.
-        }
-    */
-
-    /*
-    public int getSpawnYCoordinate(){
-        //ToDo: Spawn y-coordinate in relation to door.
-    }
-     */
-
     /**
      * Returns FieldType for Field-, Player-interactions or rendering.
      *
