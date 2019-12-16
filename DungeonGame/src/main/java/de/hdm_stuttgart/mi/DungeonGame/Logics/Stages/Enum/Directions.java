@@ -4,7 +4,7 @@
  * List of Directions for exit, entry and Player positioning.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-14 / Sascha W.
+ * last edit / by: 2019-12-16 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum;
 
@@ -16,5 +16,9 @@ public enum Directions {
     Bottom,
     Left,
     Right,
+    TopRight,
+    TopLeft,
+    BottomLeft,
+    BottomRight,
     NotDefined
 }

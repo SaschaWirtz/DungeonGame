@@ -4,7 +4,7 @@
  * Main class for field creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-14 / Sascha W.
+ * last edit / by: 2019-12-16 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -58,6 +58,18 @@ public class Field {
     public void setEntryDirection(Directions entryDirection) {
         EntryDirection = entryDirection;
     }
+
+    /*
+    public int getSpawnXCoordinate(){
+        //ToDo: Spawn x-coordinate in relation to door.
+        }
+    */
+
+    /*
+    public int getSpawnYCoordinate(){
+        //ToDo: Spawn y-coordinate in relation to door.
+    }
+     */
 
     /**
      * Returns FieldType for Field-, Player-interactions or rendering.
