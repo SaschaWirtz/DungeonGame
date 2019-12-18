@@ -4,12 +4,16 @@
  * Main class for field creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-16 / Sascha W.
+ * last edit / by: 2019-12-18 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
 //Import statements
 
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.CreateWallAndFloor;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.Entry;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.PutEntryAndExit;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Enum.Difficulty;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
 
@@ -21,71 +25,67 @@ public class Field {
     //Attributes
 
     //random FieldType hight
-    private final int HIGHT = (int) (Math.random() * 45) + 5;
+    private final int HIGHT = (int) (Math.random() * 25) + 5;
     //random FieldType width
     private final int WIDTH = (int) (Math.random() * 45) + 5;
-    //new entry direction
-    private Directions EntryDirection;
+    //new entry
+    private Entry entry;
+    //array with all entrys
+    private Entry[] doors;
     //random roomType
-    private final int ROOMTYPE = (int) Math.random() * 100;
-
-    /**
-     * Constructor to Field.
-     *
-     * @param EntryDirection is the new direction for entry position.
-     */
-    public Field(Directions EntryDirection) {
-        this.EntryDirection = EntryDirection;
-
-        //Fill room with Floor
-        for(int hight = 0; hight < (room.length - 1); hight++) {
-            for(int width = 1; width < (room[0].length - 1); width++) {
-                room[hight][width] = FieldType.Floor;
-            }
-        }
-
-        //Place top wall
-        for(int width = 1; width < room[0].length; width++) {
-            room[0][width] = FieldType.Wall;
-        }
-
-        //Place left wall
-        for(int higth = 1; higth < room.length - 1; higth++) {
-            room[higth][room[0].length - 1] = FieldType.Wall;
-        }
-
-        //Place bottom wall
-        for(int hight = 0; hight < room.length - 1; hight++) {
-            room[hight][0] = FieldType.Wall;
-        }
-
-        //Place right wall
-        for(int width = 0; width < room[0].length; width++) {
-            room[room.length - 1][width] = FieldType.Wall;
-        }
-    }
+    private final int ROOMTYPE = (int) (Math.random() * 100);
+    //Difficulty
+    private final Difficulty DIFFICULTY;
 
     /**
      * FieldType is the main array in which the end Field will be saved.
      */
-    FieldType[][] room = new FieldType[HIGHT][WIDTH];
+    private FieldType[][] room = new FieldType[HIGHT][WIDTH];
+
+    /**
+     * Constructor to Field.
+     *
+     * @param entry is the new direction for entry position.
+     */
+    public Field(Difficulty difficulty, Entry entry) {
+        this.DIFFICULTY = difficulty;
+        this.entry = entry;
+
+        //Fill room-array with simple wall and floor
+        new CreateWallAndFloor(room);
+
+        /**
+         * Selection of roomtypes.
+         */
+        if(ROOMTYPE <= 100 && ROOMTYPE >= 0) {
+            //Adding entry and exit
+            new PutEntryAndExit(entry, room);
+        //ToDo: Different map genertors
+        }
+    }
+
+    /*
+    public void checkPlayerField() {
+        //ToDo:Item and Exit check
+    }
+     */
 
     /**
      * Passes on the EntryDirection for the next field.
      *
      * @return dirction of the new entry.
      */
-    public Directions getEntryDirection() {
-        return EntryDirection;
+    public Entry getEntry() {
+        return entry;
     }
 
     /**
      * Reciving new direction for entry.
      *
-     * @param entryDirection is setting the new EntryDirection.
+     * @param entry is setting the new EntryDirection.
      */
-    public void setEntryDirection(Directions entryDirection) {
-        EntryDirection = entryDirection;
+    public void setEntry(Entry entry) {
+        this.entry = entry;
     }
 
     /**
