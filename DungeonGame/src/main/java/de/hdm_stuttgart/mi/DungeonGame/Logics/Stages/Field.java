@@ -9,7 +9,6 @@
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
 //Import statements
-
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.CreateWallAndFloor;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.Entry;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.PutEntryAndExit;
