@@ -4,7 +4,7 @@
  * Main class for field creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-18 / Sascha W.
+ * last edit / by: 2019-12-19 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -23,9 +23,9 @@ public class Field {
     //Attributes
 
     //random FieldType hight
-    private final int HIGHT = (int) (Math.random() * 25) + 5;
+    private final int HIGHT = (int) (Math.random() * 25) + 6;
     //random FieldType width
-    private final int WIDTH = (int) (Math.random() * 45) + 5;
+    private final int WIDTH = (int) (Math.random() * 45) + 6;
     //new entry
     private Entry entry;
     //array with all entrys
