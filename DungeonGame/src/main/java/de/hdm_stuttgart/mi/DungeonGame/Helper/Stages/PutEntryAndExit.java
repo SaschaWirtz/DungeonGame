@@ -6,12 +6,12 @@
  * author: Sascha W.
  * last edit / by: 2019-12-18 / Sascha W.
  */
-package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
+package de.hdm_stuttgart.mi.DungeonGame.Helper.Stages;
 
 //Import statements
 
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
-import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Field;
+
 import java.util.ArrayList;
 
 public class PutEntryAndExit {

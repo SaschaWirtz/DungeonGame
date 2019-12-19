@@ -10,11 +10,10 @@ package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
 //Import statements
 
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.CreateWallAndFloor;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.Entry;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.PutEntryAndExit;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.CreateWallAndFloor;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.Entry;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.PutEntryAndExit;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Enum.Difficulty;
-import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
 
 /**
