@@ -40,7 +40,7 @@ public class PutEntryAndExit {
             case Top:
                 putTopDoor();
                 for(int nextEntry = 1; nextEntry == 1; nextEntry =(int) (Math.random() * 2)){
-                    switch((int )(Math.random() * 4)){
+                    switch((int) (Math.random() * 5)){
                         case 1:
                             putTopDoor();
                             break;
@@ -63,7 +63,7 @@ public class PutEntryAndExit {
             case Right:
                 putRightDoor();
                 for(int nextEntry = 1; nextEntry == 1; nextEntry =(int) (Math.random() * 2)){
-                    switch((int )(Math.random() * 4)){
+                    switch((int )(Math.random() * 5)){
                         case 1:
                             putTopDoor();
                             break;
@@ -86,7 +86,7 @@ public class PutEntryAndExit {
             case Bottom:
                 putBottomDoor();
                 for(int nextEntry = 1; nextEntry == 1; nextEntry =(int) (Math.random() * 2)){
-                    switch((int )(Math.random() * 4)){
+                    switch((int )(Math.random() * 5)){
                         case 1:
                             putTopDoor();
                             break;
@@ -109,7 +109,7 @@ public class PutEntryAndExit {
             case Left:
                 putLeftDoor();
                 for(int nextEntry = 1; nextEntry == 1; nextEntry =(int) (Math.random() * 2)){
-                    switch((int )(Math.random() * 4)){
+                    switch((int )(Math.random() * 5)){
                         case 1:
                             putTopDoor();
                             break;
@@ -132,7 +132,7 @@ public class PutEntryAndExit {
             default:
                 putStairs();
                 for(int nextEntry = 1; nextEntry == 1; nextEntry =(int) (Math.random() * 2)){
-                    switch((int )(Math.random() * 4)){
+                    switch((int )(Math.random() * 5)){
                         case 1:
                             putTopDoor();
                             break;
@@ -152,7 +152,6 @@ public class PutEntryAndExit {
                 }
                 break;
             //ToDo: Arraylist for Entrys
-            //ToDo: Fix Exits
         }
     }
 
@@ -169,6 +168,7 @@ public class PutEntryAndExit {
             EntryPosition = possibleDoors.get((int) (Math.random() * possibleDoors.size()));
             room[EntryPosition.getyCoordinate()][EntryPosition.getxCoordinate()] = FieldType.Door;
         }
+        possibleDoors = new ArrayList<Coordinate>();
     }
 
     /**
@@ -184,6 +184,7 @@ public class PutEntryAndExit {
             EntryPosition = possibleDoors.get((int) (Math.random() * possibleDoors.size()));
             room[EntryPosition.getyCoordinate()][EntryPosition.getxCoordinate()] = FieldType.Door;
         }
+        possibleDoors = new ArrayList<Coordinate>();
     }
 
     /**
@@ -199,6 +200,7 @@ public class PutEntryAndExit {
             EntryPosition = possibleDoors.get((int) (Math.random() * possibleDoors.size()));
             room[EntryPosition.getyCoordinate()][EntryPosition.getxCoordinate()] = FieldType.Door;
         }
+        possibleDoors = new ArrayList<Coordinate>();
     }
 
     /**
@@ -214,6 +216,7 @@ public class PutEntryAndExit {
             EntryPosition = possibleDoors.get((int) (Math.random() * possibleDoors.size()));
             room[EntryPosition.getyCoordinate()][EntryPosition.getxCoordinate()] = FieldType.Door;
         }
+        possibleDoors = new ArrayList<Coordinate>();
     }
 
     /**
@@ -226,7 +229,10 @@ public class PutEntryAndExit {
                 possibleDoors.add(availableTiles.get(freeTile));
             }
         }
-        EntryPosition = possibleDoors.get((int) (Math.random() * possibleDoors.size()));
-        room[EntryPosition.getyCoordinate()][EntryPosition.getxCoordinate()] = FieldType.Stairs;
+        if(possibleDoors.size() > 0) {
+            EntryPosition = possibleDoors.get((int) (Math.random() * possibleDoors.size()));
+            room[EntryPosition.getyCoordinate()][EntryPosition.getxCoordinate()] = FieldType.Stairs;
+        }
+        possibleDoors = new ArrayList<Coordinate>();
     }
 }
