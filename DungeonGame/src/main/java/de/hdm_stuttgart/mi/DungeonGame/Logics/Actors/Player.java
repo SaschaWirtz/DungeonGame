@@ -11,6 +11,9 @@ public class Player extends Actor {
     public Player(){
         super();
     }
+    public Player(Coordinate coordinate){
+        super(coordinate);
+    }
     public Player(Coordinate coordinate, int healthpoints){
         super(coordinate,healthpoints);
     }

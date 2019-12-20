@@ -17,6 +17,10 @@ public class Actor {
         this.coordinate=position;
         this.healthPoints=healthPoints;
     }
+    public Actor(Coordinate coordinate){
+        this.coordinate=coordinate;
+        healthPoints=100;
+    }
     public Actor(int x, int y, int healthPoints){
         coordinate=new Coordinate(x,y);
         this.healthPoints=healthPoints;

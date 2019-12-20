@@ -11,6 +11,9 @@ public class Enemy extends Actor {
     public Enemy(){
         super();
     }
+    public Enemy(Coordinate coordinate){
+        super(coordinate);
+    }
     public Enemy(Coordinate coordinate,int healthpoints){
         super(coordinate,healthpoints);
     }
