@@ -1,32 +1,30 @@
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Actors;
 
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Coordinate;
+
 public class Actor {
 
     //Attributes
-    protected int x , y ,healthPoints;
+    protected int healthPoints;
+    protected Coordinate coordinate;
 
     //Constructors
     public Actor(){
-        x=0;
-        y=0;
+        coordinate=new Coordinate(0,0);
         healthPoints=100;
     }
+    public Actor(Coordinate position,int healthPoints){
+        this.coordinate=position;
+        this.healthPoints=healthPoints;
+    }
     public Actor(int x, int y, int healthPoints){
-        this.x=x;
-        this.y=y;
+        coordinate=new Coordinate(x,y);
         this.healthPoints=healthPoints;
     }
 
     //Get- and Setter Methods
-    public void SetX(int x){
-        this.x=x;
-    }
-    public void SetY(int y){
-        this.y=y;
-    }
-    public void SetXY(int x,int y){
-        this.x=x;
-        this.y=y;
+    public void SetCoordinate(Coordinate coordinate){
+        this.coordinate=coordinate;
     }
     public void SetHealthPoints(int healthPoints){
         this.healthPoints=healthPoints;
@@ -34,11 +32,8 @@ public class Actor {
     public void AddHealthPoints(int healthPoints){
         this.healthPoints+=healthPoints;
     }
-    public int GetX(){
-        return x;
-    }
-    public int GetY(){
-        return y;
+    public Coordinate GetCoordinate(){
+        return coordinate;
     }
     public int GetHealthPoints(){
         return healthPoints;
