@@ -4,7 +4,7 @@
  * Main class for field creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-19 / Sascha W.
+ * last edit / by: 2019-12-20 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -14,6 +14,8 @@ import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.Entry;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.PutEntryAndExit;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Enum.Difficulty;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
+
+import java.util.ArrayList;
 
 /**
  * Junction of all Field related classes.
@@ -28,8 +30,8 @@ public class Field {
     private final int WIDTH = (int) (Math.random() * 45) + 6;
     //new entry
     private Entry entry;
-    //array with all entrys
-    private Entry[] doors;
+    //List with all entrys
+    private ArrayList<Entry> doorsAndStairs = new ArrayList<Entry>();
     //random roomType
     private final int ROOMTYPE = (int) (Math.random() * 100);
     //Difficulty
@@ -57,7 +59,7 @@ public class Field {
          */
         if(ROOMTYPE <= 100 && ROOMTYPE >= 0) {
             //Adding entry and exit
-            new PutEntryAndExit(entry, room);
+            new PutEntryAndExit(entry, room, doorsAndStairs);
         //ToDo: Different map genertors
         }
     }
@@ -77,14 +79,6 @@ public class Field {
         return entry;
     }
 
-    /**
-     * Reciving new direction for entry.
-     *
-     * @param entry is setting the new EntryDirection.
-     */
-    public void setEntry(Entry entry) {
-        this.entry = entry;
-    }
 
     /**
      * Returns FieldType for Field-, Player-interactions or rendering.

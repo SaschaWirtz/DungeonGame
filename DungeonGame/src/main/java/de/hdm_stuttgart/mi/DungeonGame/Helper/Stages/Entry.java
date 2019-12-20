@@ -4,11 +4,12 @@
  * Door-class for door storage.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-18 / Sascha W.
+ * last edit / by: 2019-12-20 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Stages;
 
 //Import statements
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Coordinate;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
 
 public class Entry {
@@ -18,14 +19,18 @@ public class Entry {
     public Directions direction;
     //Entry or Exit
     public boolean entrance;
+    //Coordinate of Entry
+    public Coordinate coordinate;
 
     /**
-     * Constructor to add entrys direction and entrance status.
+     * Constructor to add entrys direction and entrance status
      *
-     * @param direction is the direction of the wall in which the entry sits in.
-     * @param entrance is saving if its a entry or a exit.
+     * @param coordinate are the coordinates of the Entry
+     * @param direction is the direction of the wall in which the entry sits in
+     * @param entrance is saving if its a entry or a exit
      */
-    public Entry(Directions direction, boolean entrance) {
+    public Entry(Coordinate coordinate, Directions direction, boolean entrance) {
+        this.coordinate = coordinate;
         this.direction = direction;
         this.entrance = entrance;
     }
