@@ -64,6 +64,17 @@ public class Field {
         }
     }
 
+    /**
+     * Refresh room with new Player and Enemy Coordinates
+     */
+    /*
+    public void refreshRoom() {
+
+    }
+*/
+    /**
+     * Method to trigger other mechanics
+     */
     /*
     public void checkPlayerField() {
         //ToDo:Item and Exit check
