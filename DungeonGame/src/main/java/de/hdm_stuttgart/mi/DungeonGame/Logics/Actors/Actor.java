@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actor;
+package de.hdm_stuttgart.mi.DungeonGame.Logics.Actors;
 
 public class Actor {
 

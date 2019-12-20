@@ -1,6 +1,8 @@
-package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actor;
+package de.hdm_stuttgart.mi.DungeonGame.Logics.Actors;
 
-public class Enemy extends Actor{
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Actors.Actor;
+
+public class Enemy extends Actor {
 
     //Attributes
 

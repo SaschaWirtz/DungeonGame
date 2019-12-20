@@ -1,6 +1,8 @@
-package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actor;
+package de.hdm_stuttgart.mi.DungeonGame.Logics.Actors;
 
-public class Player extends Actor{
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Actors.Actor;
+
+public class Player extends Actor {
 
     //Attributes
 
