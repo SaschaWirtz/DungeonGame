@@ -88,4 +88,15 @@ public class Field {
     public FieldType[][] getRoom() {
         return room;
     }
+
+    /**
+     * Returns a requested FieldType
+     *
+     * @param xCoordinate of requested tile
+     * @param yCoordinate of requested tile
+     * @return FieldType of requested tile
+     */
+    public FieldType getFieldType(int xCoordinate, int yCoordinate) {
+        return room[yCoordinate][xCoordinate];
+    }
 }
