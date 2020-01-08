@@ -17,18 +17,18 @@ import java.util.ArrayList;
 public class PutEntryAndExit {
 
     //Attributes
-    //is a random number based on given parameter to place the enrance-door or staris
-    Coordinate EntryPosition;
+    //is a random number based on given parameter to place the entrance-door or stairs
+    private Coordinate EntryPosition;
     //List of all possible doorpositions in a wall
-    ArrayList<Coordinate> possibleDoors = new ArrayList<Coordinate>();
+    private ArrayList<Coordinate> possibleDoors = new ArrayList<Coordinate>();
     //room FieldType-array from Field.java
-    FieldType[][] room;
+    private FieldType[][] room;
     //variable for test if entry is placed
-    boolean entryPlaced;
+    private boolean entryPlaced;
     //reference on all entry objects
-    ArrayList<Entry> doorsAndStairs;
+    private ArrayList<Entry> doorsAndStairs;
     //Entry for direction
-    Entry entry;
+    private Entry entry;
 
     /**
      * Constructor to add Entry and Exit to Room in Field.java
