@@ -4,7 +4,7 @@
  * Class to create Doors and Stairs.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-20 / Sascha W.
+ * last edit / by: 2020-01-09 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Stages;
 

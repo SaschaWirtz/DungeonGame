@@ -4,7 +4,7 @@
  * Class for room creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-20 / Sascha W.
+ * last edit / by: 2020-01-09 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -70,23 +70,19 @@ public class Room {
     /**
      * Refresh room with new Player and Enemy Coordinates
      */
-    /*
-    public void refreshRoom() {
 
-    }
-*/
-    public void moveActor() {
+    public void refreshRoom() {
 
     }
 
     /**
      * Method to trigger other mechanics
      */
-    /*
+
     public void checkPlayerField() {
         //ToDo:Item and Exit check
     }
-     */
+
 
     /**
      * Passes on the EntryDirection for the next field.
