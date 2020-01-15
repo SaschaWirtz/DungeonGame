@@ -27,9 +27,9 @@ public class Room {
     //Attributes
 
     //random FieldType hight
-    private final int HIGHT = (int) (Math.random() * 14) + 6;
+    private final int HIGHT = (int) (Math.random() * 9) + 6;
     //random FieldType width
-    private final int WIDTH = (int) (Math.random() * 24) + 6;
+    private final int WIDTH = (int) (Math.random() * 19) + 6;
     //new entry
     private Entry entry;
     //List with all entrys
