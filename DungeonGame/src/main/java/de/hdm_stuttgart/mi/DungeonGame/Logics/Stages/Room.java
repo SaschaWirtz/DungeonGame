@@ -77,7 +77,7 @@ public class Room {
      * Refresh room with new Player and Enemy Coordinates
      */
 
-    public void refreshRoom() {
+    private void refreshRoom() {
         room[Field.getPlayer().GetCoordinate().getyCoordinate()][Field.getPlayer().GetCoordinate().getxCoordinate()] = FieldType.Player;
         for(int enemycount = 0; enemycount < enemies.size(); enemycount++) {
             room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
@@ -89,6 +89,9 @@ public class Room {
      */
 
     public void checkPlayerField() {
+    /*    public void changeRoom() {
+            room = new Room(Difficulty.Medium, room.getEntry());
+        } */
         //ToDo:Item and Exit check
     }
 
@@ -98,9 +101,9 @@ public class Room {
      *
      * @return dirction of the new entry.
      */
-    public Entry getEntry() {
+ /*   public Entry getEntry() {
         return entry;
-    }
+    } */
 
 
     /**
@@ -109,6 +112,7 @@ public class Room {
      * @return a specific FieldType.
      */
     public FieldType[][] getRoom() {
+        refreshRoom();
         return room;
     }
 
@@ -120,6 +124,7 @@ public class Room {
      * @return FieldType of requested tile
      */
     public FieldType getFieldType(int xCoordinate, int yCoordinate) {
+        refreshRoom();
         return room[yCoordinate][xCoordinate];
     }
 }

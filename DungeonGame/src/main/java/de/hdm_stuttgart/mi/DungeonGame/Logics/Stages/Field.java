@@ -19,9 +19,7 @@ import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
 public class Field {
     private static Player player = new Player();
     private static Room room = new Room(Difficulty.Medium, new Entry(new Coordinate(1, 1), Directions.Top, Boolean.TRUE) );
-    public void changeRoom() {
-        room = new Room(Difficulty.Medium, room.getEntry());
-    }
+
 
     public static Player getPlayer() {
         return player;
