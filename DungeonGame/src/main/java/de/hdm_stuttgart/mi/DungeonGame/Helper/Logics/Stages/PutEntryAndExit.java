@@ -6,10 +6,10 @@
  * author: Sascha W.
  * last edit / by: 2020-01-15 / Sascha W.
  */
-package de.hdm_stuttgart.mi.DungeonGame.Helper.Stages;
+package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
 //Import statements
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Coordinate;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Field;
 

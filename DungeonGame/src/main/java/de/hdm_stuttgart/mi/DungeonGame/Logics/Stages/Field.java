@@ -9,8 +9,8 @@
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
 //Import statements
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Coordinate;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.Entry;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.Entry;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Actors.Player;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Enum.Difficulty;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
