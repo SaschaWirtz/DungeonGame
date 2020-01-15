@@ -9,6 +9,7 @@
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
 //Import statements
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.CreateEnemies;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.CreateWallAndFloor;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.Entry;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Stages.PutEntryAndExit;
@@ -39,6 +40,8 @@ public class Room {
     private final Difficulty DIFFICULTY;
     //List of all Enemies
     private ArrayList<Enemy> enemies;
+    //List of all Items
+    //private ArrayList<Item> items;
 
     /**
      * FieldType is the main array in which the end Field will be saved.
@@ -65,6 +68,9 @@ public class Room {
             new PutEntryAndExit(entry, room, doorsAndStairs);
         //ToDo: Different map genertors
         }
+
+        enemies = CreateEnemies.fillEnemyList(room);
+        refreshRoom();
     }
 
     /**
@@ -72,7 +78,10 @@ public class Room {
      */
 
     public void refreshRoom() {
-
+        room[Field.getPlayer().GetCoordinate().getyCoordinate()][Field.getPlayer().GetCoordinate().getxCoordinate()] = FieldType.Player;
+        for(int enemycount = 0; enemycount < enemies.size(); enemycount++) {
+            room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
+        }
     }
 
     /**

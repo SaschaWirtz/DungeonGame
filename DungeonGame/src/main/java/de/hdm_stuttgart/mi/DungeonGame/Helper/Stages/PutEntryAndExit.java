@@ -11,6 +11,7 @@ package de.hdm_stuttgart.mi.DungeonGame.Helper.Stages;
 //Import statements
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Coordinate;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Field;
 
 import java.util.ArrayList;
 
@@ -49,30 +50,35 @@ public class PutEntryAndExit {
                 putTopDoor();
                 doorsAndStairs.get(0).entrance = true;
                 putRandomExits();
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate(), doorsAndStairs.get(0).coordinate.getyCoordinate() + 1));
                 break;
             //EntranceDoor in Right Wall
             case Right:
                 putRightDoor();
                 doorsAndStairs.get(0).entrance = true;
                 putRandomExits();
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate() - 1, doorsAndStairs.get(0).coordinate.getyCoordinate()));
                 break;
             //EntranceDoor in Bottom Wall
             case Bottom:
                 putBottomDoor();
                 doorsAndStairs.get(0).entrance = true;
                 putRandomExits();
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate(), doorsAndStairs.get(0).coordinate.getyCoordinate() - 1));
                 break;
             //EntranceDoor int Left Wall
             case Left:
                 putLeftDoor();
                 doorsAndStairs.get(0).entrance = true;
                 putRandomExits();
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate() + 1, doorsAndStairs.get(0).coordinate.getyCoordinate()));
                 break;
             //EntranceStairs in playfield
             default:
                 putStairs();
                 doorsAndStairs.get(0).entrance = true;
                 putRandomExits();
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate() - 1, doorsAndStairs.get(0).coordinate.getyCoordinate()));
                 break;
         }
     }
@@ -172,7 +178,7 @@ public class PutEntryAndExit {
      * Putts Stairs in the playfield
      */
     private void putStairs() {
-        ArrayList<Coordinate> availableTiles = new FreeTiles().freeTiles(room);
+        ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
         for(int freeTile = 0; freeTile < availableTiles.size(); freeTile++) {
             if((room[availableTiles.get(freeTile).getyCoordinate()][availableTiles.get(freeTile).getxCoordinate()] == FieldType.Floor)
                     && (room[availableTiles.get(freeTile).getyCoordinate() - 1][availableTiles.get(freeTile).getxCoordinate()] == FieldType.Floor)

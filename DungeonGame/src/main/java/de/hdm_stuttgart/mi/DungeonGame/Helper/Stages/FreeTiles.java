@@ -4,7 +4,7 @@
  * All FreeTiles.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-19 / Sascha W.
+ * last edit / by: 2020-01-15 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Stages;
 
@@ -20,7 +20,7 @@ public class FreeTiles {
      * @param room from Filed.java
      * @return List of all FreeTiles
      */
-    public ArrayList<Coordinate> freeTiles(FieldType[][] room) {
+    public static ArrayList<Coordinate> freeTiles(FieldType[][] room) {
         ArrayList<Coordinate> freeSpace = new ArrayList<Coordinate>();
         for(int row = 1; row < room.length - 2; row++) {
             for(int column = 1; column < room[0].length - 2; column++) {
