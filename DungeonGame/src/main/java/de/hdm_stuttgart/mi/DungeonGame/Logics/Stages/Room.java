@@ -4,7 +4,7 @@
  * Class for room creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-09 / Sascha W.
+ * last edit / by: 2020-01-15 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -26,9 +26,9 @@ public class Room {
     //Attributes
 
     //random FieldType hight
-    private final int HIGHT = (int) (Math.random() * 25) + 6;
+    private final int HIGHT = (int) (Math.random() * 14) + 6;
     //random FieldType width
-    private final int WIDTH = (int) (Math.random() * 45) + 6;
+    private final int WIDTH = (int) (Math.random() * 24) + 6;
     //new entry
     private Entry entry;
     //List with all entrys

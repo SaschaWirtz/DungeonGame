@@ -4,7 +4,7 @@
  * Class to create Doors and Stairs.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-09 / Sascha W.
+ * last edit / by: 2020-01-15 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Stages;
 
@@ -81,8 +81,8 @@ public class PutEntryAndExit {
      * Putts a random available Exit
      */
     private void putRandomExits() {
-        for(int nextEntry = 1; nextEntry == 1; nextEntry =(int) (Math.random() * 3)){
-            for(entryPlaced = false; !entryPlaced;) {
+        for(entryPlaced = false; !entryPlaced;) {
+            for(int nextEntry = 1; nextEntry == 1; nextEntry =(int) (Math.random() * 3)){
                 switch ((int) (Math.random() * 5)) {
                     case 1:
                         putTopDoor();
