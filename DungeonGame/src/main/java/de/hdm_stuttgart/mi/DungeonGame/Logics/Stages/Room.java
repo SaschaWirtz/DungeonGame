@@ -69,6 +69,8 @@ public class Room {
         //ToDo: Different map genertors
         }
 
+        refreshRoom();
+
         enemies = CreateEnemies.fillEnemyList(room);
         refreshRoom();
     }
@@ -79,8 +81,10 @@ public class Room {
 
     private void refreshRoom() {
         room[Field.getPlayer().GetCoordinate().getyCoordinate()][Field.getPlayer().GetCoordinate().getxCoordinate()] = FieldType.Player;
-        for(int enemycount = 0; enemycount < enemies.size(); enemycount++) {
-            room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
+        if(!(enemies == null)) {
+            for (int enemycount = 0; enemycount < enemies.size(); enemycount++) {
+                room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
+            }
         }
     }
 

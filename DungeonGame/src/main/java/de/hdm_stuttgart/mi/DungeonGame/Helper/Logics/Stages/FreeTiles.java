@@ -22,8 +22,8 @@ public class FreeTiles {
      */
     public static ArrayList<Coordinate> freeTiles(FieldType[][] room) {
         ArrayList<Coordinate> freeSpace = new ArrayList<Coordinate>();
-        for(int row = 1; row < room.length - 2; row++) {
-            for(int column = 1; column < room[0].length - 2; column++) {
+        for(int row = 1; row < room.length - 1; row++) {
+            for(int column = 1; column < room[0].length - 1; column++) {
                 if (room[row][column] == FieldType.Floor) {
                     freeSpace.add(new Coordinate(column, row));
                 }
