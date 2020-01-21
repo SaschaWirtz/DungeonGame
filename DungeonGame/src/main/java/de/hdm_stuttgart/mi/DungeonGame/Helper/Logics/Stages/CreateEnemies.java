@@ -4,7 +4,7 @@
  * Spawn Enemies.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-15 / Sascha W.
+ * last edit / by: 2020-01-21 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -24,7 +24,7 @@ public class CreateEnemies {
     public static ArrayList fillEnemyList(FieldType[][] room){
         ArrayList<Enemy> enemies = new ArrayList<>();
         ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
-        for(int enemycount = 1; enemycount < FreeTiles.freeTiles(room).size() / 15; enemycount++) {
+        for(int enemycount = 0; enemycount < FreeTiles.freeTiles(room).size() / 1; enemycount++) {
             int enemyCoordinate = (int) (Math.random() * availableTiles.size());
             enemies.add(new Enemy(availableTiles.get(enemyCoordinate)));
             availableTiles.remove(enemyCoordinate);
