@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Actors;
 
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Coordinate;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
 
 public class Actor {
 
