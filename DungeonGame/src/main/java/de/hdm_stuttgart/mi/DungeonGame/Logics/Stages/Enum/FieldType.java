@@ -4,7 +4,7 @@
  * List of all possible FieldTypes.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-13 / Sascha W.
+ * last edit / by: 2020-01-22 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum;
 
@@ -51,7 +51,12 @@ public enum FieldType {
     /**
      * On this tile sits an usable item
      */
-    ItemField(true, '?');
+    ItemField(true, '?'),
+
+    /**
+     * On this tile sits an coin.
+     */
+    CoinField(true, '$');
 
     /**
      * Adding a boolean to check the FieldTypes accessibility

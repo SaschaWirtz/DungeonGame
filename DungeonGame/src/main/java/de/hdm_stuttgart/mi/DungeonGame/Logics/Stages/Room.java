@@ -9,10 +9,9 @@
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
 //Import statements
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.CreateEnemies;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.CreateWallAndFloor;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.Entry;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.PutEntryAndExit;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Potion;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.*;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Actors.Enemy;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Enum.Difficulty;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
@@ -41,7 +40,9 @@ public class Room {
     //List of all Enemies
     private ArrayList<Enemy> enemies;
     //List of all Items
-    //private ArrayList<Item> items;
+    private ArrayList<Potion> items;
+    //List of all Coins
+    private ArrayList<Coordinate> coins;
 
     /**
      * FieldType is the main array in which the end Field will be saved.
@@ -68,15 +69,23 @@ public class Room {
             new PutEntryAndExit(entry, room, doorsAndStairs);
         //ToDo: Different map genertors
         }
-
         refreshRoom();
 
+        //Create Enemys
         enemies = CreateEnemies.fillEnemyList(room);
+        refreshRoom();
+
+        //Create Items
+        items = CreateItems.fillItemList(room);
+        refreshRoom();
+
+        //Set Coins;
+        coins = SetCoins.fillCoinList(room);
         refreshRoom();
     }
 
     /**
-     * Refresh room with new Player and Enemy Coordinates
+     * Refresh room with new Player, Enemy, Item and Coin Coordinates
      */
 
     private void refreshRoom() {
@@ -86,6 +95,16 @@ public class Room {
                 room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
             }
         }
+//        if(!(items == null)) {
+//            for (int itemcount = 0; itemcount < items.size(); itemcount++) {
+//                room[items.get(itemcount).GetCoordinate().getyCoordinate()][enemies.get(itemcount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
+//            }
+//        }
+//        if(!(coins == null)) {
+//            for (int itemcount = 0; itemcount < items.size(); itemcount++) {
+//                room[items.get(itemcount).GetCoordinate().getyCoordinate()][enemies.get(itemcount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
+//            }
+//        }
     }
 
     /**
