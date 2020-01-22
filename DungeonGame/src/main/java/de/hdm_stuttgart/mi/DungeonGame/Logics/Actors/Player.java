@@ -8,17 +8,11 @@ public class Player extends Actor {
     //Attributes
 
     //Constructors
-    public Player(){
-        super();
-    }
     public Player(Coordinate coordinate){
-        super(coordinate);
-    }
-    public Player(Coordinate coordinate, int healthpoints){
-        super(coordinate,healthpoints);
-    }
-    public Player(int x, int y, int healthPoints){
-        super(x,y,healthPoints);
+        this.coordinate=coordinate;
+        attack=25;
+        defense=0;
+        speed=10;
     }
 
     //Methods

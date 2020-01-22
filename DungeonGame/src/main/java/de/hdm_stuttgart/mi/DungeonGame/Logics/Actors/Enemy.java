@@ -8,17 +8,12 @@ public class Enemy extends Actor {
     //Attributes
 
     //Constructors
-    public Enemy(){
-        super();
-    }
-    public Enemy(Coordinate coordinate){
-        super(coordinate);
-    }
-    public Enemy(Coordinate coordinate,int healthpoints){
-        super(coordinate,healthpoints);
-    }
-    public Enemy(int x, int y, int healthPoints){
-        super(x,y,healthPoints);
+    public Enemy(Coordinate coordinate,int healthPoints,int attack,int defense,int speed){
+        this.coordinate=coordinate;
+        this.healthPoints=healthPoints;
+        this.attack=attack;
+        this.defense=defense;
+        this.speed=speed;
     }
 
     //Methods
