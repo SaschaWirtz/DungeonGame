@@ -11,7 +11,7 @@ package de.hdm_stuttgart.mi.DungeonGameTester.Helper.Logics.Actors;
 //Import statements
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Inventory;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Potion;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.PotionType;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Enums.PotionType;
 import org.junit.Assert;
 import org.junit.Test;
 
