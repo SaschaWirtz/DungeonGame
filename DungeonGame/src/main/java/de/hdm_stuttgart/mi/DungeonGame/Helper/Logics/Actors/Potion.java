@@ -4,16 +4,13 @@
  * Class for creating potions
  *
  * author: Micha H.
- * last edit / by: 2019-01-15 / Micha H.
+ * last edit / by: 2019-01-22 / Micha H.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors;
 
 //Import statements
-// ...
-
-// ToDo: public/protected/private
-
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Inventory;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Enums.PotionType;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
 
 /**
  * Class for creating objects of type Potion
@@ -24,19 +21,23 @@ public class Potion {
      * Potion stats
      * type - defines the type of the potion from enum PotionType
      * value - defines the value of the effect of the potion
+     *
      */
     private PotionType type;
     private int value;
+    private Coordinate coordinate;
 
     /**
      * constructor for creating objects of class Potion
      * @param type - type of the new potion object
      * @param value - value of the effect of the new potion object
+     * @param coordinate - new Coorinate object with x and y value;
      */
-    public Potion(PotionType type, int value) {
+    public Potion(PotionType type, int value, Coordinate coordinate) {
 
         this.type = type;
         this.value = value;
+        this.coordinate = coordinate;
 
     }
 

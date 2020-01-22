@@ -4,14 +4,9 @@
  * Inventory of the player for items (potions/coins/other items)
  *
  * author: Micha H.
- * last edit / by: 2019-01-15 / Micha H.
+ * last edit / by: 2019-01-22 / Micha H.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors;
-
-//Import statements
-// ...
-
-// ToDo: public/protected/private
 
 /**
  * Static inventory of the player to administer items (potions/coins).
@@ -19,14 +14,14 @@ package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors;
 public class Inventory {
 
     /**
-     * potions - array of the type Potion. Stores objects of the class Potion.
-     *          Array size: 100
-     *          ToDo: Array size can be increased automatically during the runtime.
-     * potionsCounter - variable counts the objects inside the Array potions. Starts at 0.
+     * potions - array of the type Potion. Stores objects of the class Potion. Array size: 100.
+     * potionsCounter - variable counts the collected potions. Starts at 0.
+     * coins - array of the coins. Stores objects of the class Coin. Array size: 100.
      * coinsCounter - variable counts the collected coins. Starts at 0.
      */
-    static private Potion[] potions = new Potion[100];  // Notiz für mich: 100 Felder und nicht feste Potionplätz + Anzahl, weil vllt auch Potions mit anderen Values möglich, die einen eigenen Platz im Array benötigen.
+    static private Potion[] potions = new Potion[100];  // ToDo: Array size. | Notiz für mich: 100 Felder und nicht feste Potionplätz + Anzahl, weil vllt auch Potions mit anderen Values möglich, die einen eigenen Platz im Array benötigen.
     static private int potionsCounter = 0;
+    static private Coin coins[] = new Coin[100]; // ToDo: Array size
     static private int coinsCounter = 0;
 
     /**
@@ -78,7 +73,9 @@ public class Inventory {
 
     }
 
-    // Only for testing.
+    /**
+     * Only for testing
+     */
     static public void printPotions() {
 
         int i = 0;
@@ -90,11 +87,24 @@ public class Inventory {
     }
 
     /**
-     * Only for Unit-Tests
+     * Only for testing
+     */
+    static public void printCoins() { System.out.println(coinsCounter); }
+
+    /**
+     * Getter for potions. Only for Unit-Tests
      * @return potions - array with potion objects
      */
     static public Potion[] getPotions() {
         return potions;
+    }
+
+    /**
+     * Getter for coins
+     * @return coinsCounter - value of collected coins.
+     */
+    static public int getCoinsCounter() {
+        return coinsCounter;
     }
 
 }
