@@ -21,7 +21,7 @@ public class Potion {
      * Potion stats
      * type - defines the type of the potion from enum PotionType
      * value - defines the value of the effect of the potion
-     * coordinate - x and y value of the potion
+     *
      */
     private PotionType type;
     private int value;
@@ -50,7 +50,7 @@ public class Potion {
 
     }
 
-    // ToDo: Javadoc | override??
+    // ToDo: Javadoc
     public boolean equals(Potion otherPotion) {
 
         return type == otherPotion.type && value == otherPotion.value;
@@ -59,7 +59,7 @@ public class Potion {
 
     /**
      * getter
-     * @return type - type of the potion of type PotionType
+     * @return type - variable of type PotionType
      */
     public PotionType getType() {
         return type;
@@ -67,18 +67,10 @@ public class Potion {
 
     /**
      * getter
-     * @return value - value of the potion of type int
+     * @return value - variable of type int
      */
     public int getValue() {
         return value;
-    }
-
-    /**
-     * getter
-     * @return coordinate - coordinate of the potion of type Coordinate
-     */
-    public Coordinate getCoordinate() {
-        return coordinate;
     }
 
 }

@@ -25,26 +25,19 @@ public class Inventory {
     static private int coinsCounter = 0;
 
     /**
-     * Adds a potion to the array potions at the last free position.
-     * @param potion - object of the class Potion with the attributes type, value and coordinate.
+     * Adds a coin to the inventory
      */
-    static public void addPotion(Potion potion) {
+    static public void collectCoin() { coinsCounter++; }
+
+    /**
+     * Adds a potion to the array potions at the last free position.
+     * @param potion - object of the class Potion with the attributes type and value.
+     */
+    static protected void addPotion(Potion potion) {
 
         potions[potionsCounter] = potion;
 
         potionsCounter++;
-
-    }
-
-    /**
-     * Adds a coin to the array coins at the last free position.
-     * @param coin - object of the class Coin with the attribute coordinate.
-     */
-    static public void addCoin(Coin coin) {
-
-        coins[coinsCounter] = coin;
-
-        coinsCounter++;
 
     }
 
