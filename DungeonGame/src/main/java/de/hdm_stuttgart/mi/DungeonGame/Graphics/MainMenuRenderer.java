@@ -14,7 +14,7 @@ import de.hdm_stuttgart.mi.DungeonGame.Graphics.Interfaces.IRenderable;
 /**
  * Renderer responsible for generating the main menu graphics.
  */
-public class MainMenuRenderer extends Renderer implements IRenderable {
+class MainMenuRenderer extends Renderer implements IRenderable {
     /**
      * Method triggering the rendering process
      */

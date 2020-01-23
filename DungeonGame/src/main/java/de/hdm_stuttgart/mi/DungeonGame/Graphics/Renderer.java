@@ -11,7 +11,6 @@ package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
 //Import statements
 
-
 /**
  * Abstract Renderer superclass providing variables and methods
  */

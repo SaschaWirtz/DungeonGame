@@ -4,7 +4,7 @@
  * The main screen singleton class printing the current buffered screen with it's content.
  *
  * author: Andreas G.
- * last edit / by: 2019-12-18 / Andreas G
+ * last edit / by: 2020-01-23 / Andreas G
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
@@ -15,7 +15,7 @@ import org.jline.terminal.*;
 /**
  * The main screen singleton class printing the current buffered screen with it's content
  */
-public class Screen {
+class Screen {
     //----- Instance variables -----//
 
     /**
