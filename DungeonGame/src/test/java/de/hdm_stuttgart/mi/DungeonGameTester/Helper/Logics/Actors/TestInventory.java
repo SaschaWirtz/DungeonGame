@@ -15,15 +15,15 @@ import org.junit.Test;
 
 public class TestInventory {
 
-    @Test
-    /**
-     * Tests if coins are added correctly to the inventory.
-     */
-    public void test_addCoin() {
-        for(int coins=0; coins<42; coins++) {
-            Inventory.collectCoin();
-            Assert.assertEquals(coins+1, Inventory.getCoinsCounter());
-        }
-    }
+//    @Test
+//    /**
+//     * Tests if coins are added correctly to the inventory.
+//     */
+//    public void test_addCoin() {
+//        for(int coins=0; coins<42; coins++) {
+//            Inventory.collectCoin();
+//            Assert.assertEquals(coins+1, Inventory.getCoinsCounter());
+//        }
+//    }
 
 }
