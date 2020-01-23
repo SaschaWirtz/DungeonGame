@@ -5,7 +5,7 @@
  * Runnable only within Graphics package.
  *
  * author: Andreas G.
- * last edit / by: 2019-12-18 / Andreas G.
+ * last edit / by: 2020-01-23 / Andreas G.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
@@ -16,7 +16,7 @@ import de.hdm_stuttgart.mi.DungeonGame.Graphics.Interfaces.IRenderable;
 /**
  * Static class used to render a in game EasterEgg screen.
  */
-class EasterEggRenderer extends Renderer implements IRenderable {
+/* Debug */ public class EasterEggRenderer extends Renderer implements IRenderable {
     /**
      * A const string visualising Andreas G. as graffity
       */
@@ -81,65 +81,47 @@ class EasterEggRenderer extends Renderer implements IRenderable {
      */
     @Override
     public void render() {
-//        //Buffering the current screen size
-//        this.bufferHeight = Screen.getScreenHeight();
-//        this.bufferWidth = Screen.getScreenWidth();
-//
-//        //Creating a new buffer array
-//        this.screenBuffer = new char[bufferHeight][bufferWidth];
-//
-//        //Do the slide animation
-//        //slideInName(asciiChars[Contributor.Andreas.getId()]);
-//
-//        //Just appear the name
-//        appearName(asciiChars[Contributor.Andreas.getId()]);
-//
-//        //Wait for 3 seconds with disappearing
-//        try {
-//            Thread.sleep(3000);
-//        } catch (Exception e) {
-//            //ToDo: A secure and senseful catching routine
-//        }
-    }
+        //Let all the contributors appear
+        for (Contributor contributor:Contributor.values()) {
+            //Just appear the name
+            appearName(asciiChars[contributor.getId()]);
 
-    /**
-     * Animating an slideIn animation for the provided Name
-     *
-     * @param nameCharBuffer The name to be animated as char array
-     */
-//    private void slideInName(char[][] nameCharBuffer) {
-//        //Defining the edges where graffitys first line and last line is located
-//        int endTop = ((screenBuffer.length - nameCharBuffer.length) / 2) - 1;
-//        int beginBottom = screenBuffer.length - 1 - endTop;
-//
-//
-//        for(int i = beginBottom; i >= 0; i--) {
-//
-//        }
-//
-//        printScreen();
-//    }
+            //Wait for 3 seconds
+            this.sleep(3000);
+        }
+    }
 
     /**
      * Just let the name appear on screen
      *
      * @param nameCharBuffer The name to be appearing as char array
      */
-//    private void appearName(char[][] nameCharBuffer) {
-//
-//    }
+    private void appearName(char[][] nameCharBuffer) {
+        //Buffering the current screen size
+        this.bufferHeight = Screen.getScreenHeight();
+        this.bufferWidth = Screen.getScreenWidth();
 
-    /**
-     * Printing the current Renderer screenBuffer with Screen class on screen
-     */
-    private void printScreen() {
-        //Provide the screenBuffer to Screen instance
-        Screen.getInstance().setScreenBuffer(this.screenBuffer);
+        //Creating a new buffer array
+        this.screenBuffer = this.getNewEmptyScreenBuffer(this.bufferHeight, this.bufferWidth);
 
-        //Let screen print the current buffer
-        Screen.getInstance().printScreen();
+        if (screenBuffer[0].length >= nameCharBuffer[0].length && screenBuffer.length >= nameCharBuffer.length) {
+            //Calculating the begin index for centering the name within the screen buffer
+            int beginIndexHorizontal = ((this.screenBuffer[0].length-1)/2)-((nameCharBuffer[0].length-1)/2);
+            int beginIndexVertical = ((this.screenBuffer.length-1)/2)-((nameCharBuffer.length-1)/2);
+
+            //Positioning the name in the middle of the screen buffer
+            for (int i = beginIndexVertical; i < nameCharBuffer.length + beginIndexVertical; i++) {
+                for (int z = beginIndexHorizontal; z < nameCharBuffer[i-beginIndexVertical].length + beginIndexHorizontal; z++) {
+                    this.screenBuffer[i][z] = nameCharBuffer[i-beginIndexVertical][z-beginIndexHorizontal];
+                }
+            }
+        } else {
+            //ToDo: Printing if screen is too small.
+        }
+
+        //Printing the result to the screen
+        this.printScreen();
     }
-
 
     /**
      * Constructor preparing the graffity char arrays
@@ -176,7 +158,7 @@ class EasterEggRenderer extends Renderer implements IRenderable {
     private char[][] createValidGraffityCharArray(String sourceGraffity) {
         //Helper variables
         char[][] resultGraffity;
-        String[] linesBuffer = sourceGraffity.split("$");
+        String[] linesBuffer = sourceGraffity.split("\\r?\\n");
         int widthBuffer = 0;
 
         //Analyzing the fitting width
@@ -190,11 +172,13 @@ class EasterEggRenderer extends Renderer implements IRenderable {
         //Filling the resultBuffer
         for (int i = 0; i < linesBuffer.length; i++) {
             char[] lineCharBuffer = linesBuffer[i].toCharArray();
-            int beginPoint = ((resultGraffity[i].length - lineCharBuffer.length) / 2);
 
-
-            for (int z = beginPoint; (z - beginPoint) < lineCharBuffer.length; z++) {
-                resultGraffity[i][z] = lineCharBuffer[z - beginPoint];
+            for (int z = 0; z < resultGraffity[i].length; z++) {
+                if (z < lineCharBuffer.length) {
+                    resultGraffity[i][z] = lineCharBuffer[z];
+                } else {
+                    resultGraffity[i][z] = ' ';
+                }
             }
         }
 
