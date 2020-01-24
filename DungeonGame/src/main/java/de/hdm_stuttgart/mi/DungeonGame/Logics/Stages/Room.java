@@ -91,7 +91,13 @@ public class Room {
      */
 
     private void refreshRoom() {
-        room[Field.getPlayer().GetCoordinate().getyCoordinate()][Field.getPlayer().GetCoordinate().getxCoordinate()] = FieldType.Player;
+        for(int width = 1; width < room.length - 1; width++) {
+            for(int hight = 1; hight < room[0].length - 1; hight++) {
+                if(room[width][hight] == FieldType.Enemy || room[width][hight] == FieldType.ItemField || room[width][hight] == FieldType.CoinField || room[width][hight] == FieldType.Player) {
+                    room[width][hight] = FieldType.Floor;
+                }
+            }
+        }
         if(!(enemies == null)) {
             for (int enemycount = 0; enemycount < enemies.size(); enemycount++) {
                 room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
@@ -107,6 +113,7 @@ public class Room {
                 room[coins.get(coinCount).getCoordinate().getyCoordinate()][coins.get(coinCount).getCoordinate().getxCoordinate()] = FieldType.CoinField;
             }
         }
+        room[Field.getPlayer().GetCoordinate().getyCoordinate()][Field.getPlayer().GetCoordinate().getxCoordinate()] = FieldType.Player;
     }
 
     /**

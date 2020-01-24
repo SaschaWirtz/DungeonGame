@@ -4,12 +4,13 @@
  * Class to create Doors and Stairs.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-15 / Sascha W.
+ * last edit / by: 2020-01-24 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
 //Import statements
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Field;
 
@@ -123,6 +124,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(new Coordinate(column, 0));
             }
         }
+        entry.direction = Directions.Top;
         add(FieldType.Door);
     }
 
@@ -139,6 +141,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(new Coordinate(room[0].length - 1, row));
             }
         }
+        entry.direction = Directions.Right;
         add(FieldType.Door);
     }
 
@@ -155,6 +158,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(new Coordinate(column, room.length - 1));
             }
         }
+        entry.direction = Directions.Bottom;
         add(FieldType.Door);
     }
 
@@ -171,6 +175,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(new Coordinate(0, row));
             }
         }
+        entry.direction = Directions.Left;
         add(FieldType.Door);
     }
 
@@ -192,6 +197,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(availableTiles.get(freeTile));
             }
         }
+        entry.direction = Directions.NotDefined;
         add(FieldType.Stairs);
     }
 
