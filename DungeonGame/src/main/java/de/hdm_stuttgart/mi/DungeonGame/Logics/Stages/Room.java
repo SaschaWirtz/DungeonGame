@@ -4,16 +4,18 @@
  * Class for room creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-15 / Sascha W.
+ * last edit / by: 2020-01-24 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
 //Import statements
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Coin;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Potion;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.*;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Actors.Enemy;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Enum.Difficulty;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
 
 import java.util.ArrayList;
@@ -42,7 +44,7 @@ public class Room {
     //List of all Items
     private ArrayList<Potion> items;
     //List of all Coins
-    private ArrayList<Coordinate> coins;
+    private ArrayList<Coin> coins;
 
     /**
      * FieldType is the main array in which the end Field will be saved.
@@ -95,16 +97,16 @@ public class Room {
                 room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
             }
         }
-//        if(!(items == null)) {
-//            for (int itemcount = 0; itemcount < items.size(); itemcount++) {
-//                room[items.get(itemcount).GetCoordinate().getyCoordinate()][enemies.get(itemcount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
-//            }
-//        }
-//        if(!(coins == null)) {
-//            for (int itemcount = 0; itemcount < items.size(); itemcount++) {
-//                room[items.get(itemcount).GetCoordinate().getyCoordinate()][enemies.get(itemcount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
-//            }
-//        }
+        if(!(items == null)) {
+            for (int itemcount = 0; itemcount < items.size(); itemcount++) {
+                room[items.get(itemcount).getCoordinate().getyCoordinate()][items.get(itemcount).getCoordinate().getxCoordinate()] = FieldType.ItemField;
+            }
+        }
+        if(!(coins == null)) {
+            for (int coinCount = 0; coinCount < coins.size(); coinCount++) {
+                room[coins.get(coinCount).getCoordinate().getyCoordinate()][coins.get(coinCount).getCoordinate().getxCoordinate()] = FieldType.CoinField;
+            }
+        }
     }
 
     /**
@@ -112,10 +114,88 @@ public class Room {
      */
 
     public void checkPlayerField() {
-    /*    public void changeRoom() {
-            room = new Room(Difficulty.Medium, room.getEntry());
-        } */
-        //ToDo:Item and Exit check
+        int coinCounter = 0;
+        int itemCounter = 0;
+        int entryCounter = 0;
+        int enemyConter = 0;
+        boolean playerTileEquelsCoinTile = false;
+        for(int coin = 0; coin < coins.size(); coin++) {
+            if(Field.getPlayer().GetCoordinate().equals(coins.get(coin).getCoordinate())) {
+                playerTileEquelsCoinTile = true;
+                coinCounter = coin;
+            }
+        }
+        boolean playerTileEquelsItemTile = false;
+        for(int item = 0; item < items.size(); item++) {
+            if(Field.getPlayer().GetCoordinate().equals(items.get(item).getCoordinate())) {
+                playerTileEquelsItemTile = true;
+                itemCounter = item;
+            }
+        }
+        boolean playerTileEquelsEntryTile = false;
+        for(int entry = 0; entry < doorsAndStairs.size(); entry++) {
+            if(Field.getPlayer().GetCoordinate().equals(doorsAndStairs.get(entry).getCoordinate())) {
+                playerTileEquelsEntryTile = true;
+                entryCounter = entry;
+            }
+        }
+        boolean playerTileEquelsEnemyTile = false;
+        for(int enemy = 0; enemy < enemies.size(); enemy++) {
+            if(Field.getPlayer().GetCoordinate().equals(enemies.get(enemy).GetCoordinate()) ||
+               Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() &&
+               Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1 ||
+               Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+               Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1 ||
+               Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+               Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() ||
+               Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+               Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+               Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() &&
+               Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+               Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+               Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+               Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+               Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() ||
+               Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+               Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1) {
+                playerTileEquelsEnemyTile = true;
+                enemyConter = enemy;
+            }
+        }
+
+        if(playerTileEquelsCoinTile){
+            Field.getInventory().addCoin(coins.get(coinCounter));
+            coins.remove(coinCounter);
+        }
+        if(playerTileEquelsItemTile){
+            Field.getInventory().addPotion(items.get(itemCounter));
+            items.remove(itemCounter);
+        }
+        if(playerTileEquelsEntryTile){
+            switch(doorsAndStairs.get(entryCounter).getDirection()) {
+                case Top:
+                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Bottom, true);
+                    break;
+                case Right:
+                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Left, true);
+                    break;
+                case Bottom:
+                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Top, true);
+                    break;
+                case Left:
+                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Right, true);
+                    break;
+                default:
+                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.NotDefined, true);
+                    break;
+            }
+
+            Field.setRoom(new Room(Difficulty.Medium, getEntry()));
+        }else if(playerTileEquelsEnemyTile) {
+//            startFight();
+            enemies.remove(enemyConter);
+        }
+        //ToDo: An Laras Klassen anpassen
     }
 
 
@@ -124,9 +204,9 @@ public class Room {
      *
      * @return dirction of the new entry.
      */
- /*   public Entry getEntry() {
+    public Entry getEntry() {
         return entry;
-    } */
+    }
 
 
     /**

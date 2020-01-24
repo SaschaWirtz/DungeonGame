@@ -4,7 +4,7 @@
  * Door-class for door storage.
  *
  * author: Sascha W.
- * last edit / by: 2019-12-20 / Sascha W.
+ * last edit / by: 2019-12-24 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -33,5 +33,17 @@ public class Entry {
         this.coordinate = coordinate;
         this.direction = direction;
         this.entrance = entrance;
+    }
+
+    public Directions getDirection() {
+        return direction;
+    }
+
+    public boolean isEntrance() {
+        return entrance;
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 }
