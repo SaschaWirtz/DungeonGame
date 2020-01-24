@@ -10,9 +10,4 @@ public class TestPlayer {
         Player p=new Player(new Coordinate(3,3));
         Assert.assertEquals(new Coordinate(3,3),p.GetCoordinate());
     }
-    @Test public void testMovement(){
-        Player p= new Player(new Coordinate(0,0));
-        p.MoveDown();
-
-    }
 }
