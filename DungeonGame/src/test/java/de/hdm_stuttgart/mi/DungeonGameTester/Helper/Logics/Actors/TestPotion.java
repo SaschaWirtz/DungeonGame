@@ -16,7 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestPotion {
-
+/**
     // ToDo: Noch kein Unit-Test!
     public static void main(String[] args) {
 
@@ -41,6 +41,7 @@ public class TestPotion {
     /**
      * Unit-Test is testing if created potion objects are correctly added to the inventory.
      */
+/**
     public void test_addPotion() {
             Potion potion = new Potion(PotionType.HEALTH, 25);
             potion.moveInventory();
@@ -63,6 +64,7 @@ public class TestPotion {
     /**
      * Unit-Test is testing if removed potion objects (no special order) are correctly removed from the inventory.
      */
+/**
     public void test_removePotion() {
         test_addPotion();
 
@@ -70,6 +72,7 @@ public class TestPotion {
             /**
              * potions - array with potion objects like in the inventory for testing
              */
+/**
             Potion[] potions = new Potion[100];
             potions[0] = new Potion(PotionType.HEALTH, 25);
             potions[1] = new Potion(PotionType.DEFENSE, 15);
@@ -96,5 +99,5 @@ public class TestPotion {
         Assert.assertEquals(null, Inventory.getPotions()[0]);
 
     }
-
+*/
 }
