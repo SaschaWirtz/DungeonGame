@@ -20,7 +20,7 @@ public enum FieldType {
     /**
      * Enemy is a FieldType which symbols a Enemy object
      */
-    Enemy(true, '§'),
+    Enemy(true, 'Ä'),
 
     /**
      * Wall is a FiledType which shapes the basic shape of the Field and creates simple walls to interfere with the players path

@@ -199,8 +199,34 @@ public class Room {
 
             Field.setRoom(new Room(Difficulty.Medium, getEntry()));
         }else if(playerTileEquelsEnemyTile) {
-//            startFight();
-            enemies.remove(enemyConter);
+            while(playerTileEquelsEnemyTile == true) {
+//                startFight();
+                enemies.remove(enemyConter);
+                playerTileEquelsEnemyTile = false;
+                for(int enemy = 0; enemy < enemies.size(); enemy++) {
+                    if(Field.getPlayer().GetCoordinate().equals(enemies.get(enemy).GetCoordinate()) ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1) {
+                        playerTileEquelsEnemyTile = true;
+                        enemyConter = enemy;
+                    }
+                }
+            }
+
         }
         //ToDo: An Laras Klassen anpassen
     }
