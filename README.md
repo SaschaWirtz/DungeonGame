@@ -7,7 +7,6 @@ This project has started as an university development project.
 Andreas G. | Moritz W. | Lara B. | Sascha W. | Micha H.     
 ---------- | --------- | ------- | --------- | -------- 
 RenderingEngine | Player | Fight | Field | ItemInventory
---------------- | ------ | ----- | ----- | -------------
 
 ## Features
 * Random level generator
