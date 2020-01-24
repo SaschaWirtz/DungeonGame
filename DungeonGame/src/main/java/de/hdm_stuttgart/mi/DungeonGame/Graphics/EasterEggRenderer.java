@@ -16,7 +16,7 @@ import de.hdm_stuttgart.mi.DungeonGame.Graphics.Interfaces.IRenderable;
 /**
  * Static class used to render a in game EasterEgg screen.
  */
-public class EasterEggRenderer extends Renderer implements IRenderable {
+class EasterEggRenderer extends Renderer implements IRenderable {
     /**
      * A const string visualising Andreas G. as graffity
       */

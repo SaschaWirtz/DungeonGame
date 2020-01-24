@@ -15,7 +15,7 @@ import java.util.Arrays;
 /**
  * Renderer responsible for generating the main menu graphics.
  */
-public class MainMenuRenderer extends Renderer implements IRenderable {
+class MainMenuRenderer extends Renderer implements IRenderable {
     /**
      * The id of the currently selected menu item
      */

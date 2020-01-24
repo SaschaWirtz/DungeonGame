@@ -18,6 +18,16 @@ import java.io.Reader;
  */
 public class Main {
     /**
+     * Class property providing a key event reader for the whole program execution
+     */
+    private static Reader reader = Screen.getInstance().getScreenReader();
+
+    /**
+     * Class property providing the main dispatcher of the application
+     */
+    private static MainDispatcher mainDispatcher = new MainDispatcher();
+
+    /**
      * The main entry point for the DungeonGame.
      *
      * @param args Startup arguments provided at application startup
@@ -26,17 +36,19 @@ public class Main {
         //Ensuring that the screen is cleared. Please do not remove this line.
         Console.clear();
 
-        //The main key reader loop
+        //Catching the possible IO exception
         try {
-            //Getting the reader instance
-            Reader reader = Screen.getInstance().getScreenReader();
-
             //The games main loop
             while (true) {
                 //Read a new key code
                 int input = reader.read();
 
-                //ToDo: Handle the key code input
+                //Dispatching the new user input
+                if (!mainDispatcher.dispatch(input)) {
+                    reader.close();
+                    Screen.getInstance().closeTerminalConnection();
+                    System.exit(0);
+                }
             }
         } catch (Exception e) {
             //ToDo: Logic error handling
