@@ -4,7 +4,7 @@
  * Class to spawn Items.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-22 / Sascha W.
+ * last edit / by: 2020-01-24 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -25,10 +25,10 @@ public class CreateItems {
     public static ArrayList fillItemList(FieldType[][] room){
         ArrayList<Potion> items = new ArrayList<>();
         ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
-        for(int itemcount = 0; itemcount < FreeTiles.freeTiles(room).size() / 15; itemcount++) {
+        for(int itemcount = 0; itemcount < FreeTiles.freeTiles(room).size() / 20; itemcount++) {
             int itemCoordinate = (int) (Math.random() * availableTiles.size());
-            PotionType potiont;
-//            items.add(new Potion(PotionType.values()[(int) ((Math.random() * PotionType.values().length)], ));
+            int[] Potionvalues = {10, 20, 50};
+            items.add(new Potion(PotionType.values()[(int) (Math.random() * PotionType.values().length)], Potionvalues[(int) (Math.random() * Potionvalues.length)], availableTiles.get(itemCoordinate)));
             availableTiles.remove(itemCoordinate);
         }
         return items;

@@ -4,7 +4,7 @@
  * Class to spawn Coins.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-22 / Sascha W.
+ * last edit / by: 2020-01-24 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
