@@ -4,7 +4,7 @@
  * Class to create Coordinate objects.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-22 / Sascha W.
+ * last edit / by: 2020-01-24 / Moritz W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics;
 
@@ -40,5 +40,31 @@ public class Coordinate {
      */
     public int getyCoordinate() {
         return yCoordinate;
+    }
+
+    /**
+     * Setter for yCoordinate
+     *
+     * @param yCoordinate of object
+     */
+    public void setyCoordinate(int yCoordinate) {
+        this.yCoordinate = yCoordinate;
+    }
+
+    public void addxCoordinate(int add){
+        xCoordinate+=add;
+    }
+    public void addyCoordinate(int add){
+        yCoordinate +=add;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        Coordinate c=(Coordinate)obj;
+        if(xCoordinate==c.xCoordinate&&yCoordinate==c.yCoordinate){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

@@ -16,7 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestPotion {
-
+/**
     // ToDo: Noch kein Unit-Test!
 //    public static void main(String[] args) {
 //
@@ -96,5 +96,4 @@ public class TestPotion {
 //        Assert.assertEquals(null, Inventory.getPotions()[0]);
 //
 //    }
-
 }

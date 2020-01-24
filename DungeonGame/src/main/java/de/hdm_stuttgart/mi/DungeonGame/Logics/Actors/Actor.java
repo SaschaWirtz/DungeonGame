@@ -4,12 +4,13 @@ import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
 
 public class Actor {
 
-    //Attributes
     protected int healthPoints,attack,defense,speed;
     protected Coordinate coordinate;
 
-
-    //Constructors
+    /**
+     * Constructor for Actor Objects
+     * Not supposed to be actually used
+     */
     public Actor(){
         coordinate=new Coordinate(0,0);
         healthPoints=0;
@@ -17,16 +18,14 @@ public class Actor {
         defense=0;
         speed=0;
     }
-
-    //Get- and Setter Methods
+    /**
+     * Get- and Setter Methods
+     */
     public void SetCoordinate(Coordinate coordinate){
         this.coordinate=coordinate;
     }
     public void SetHealthPoints(int healthPoints){
         this.healthPoints=healthPoints;
-    }
-    public void AddHealthPoints(int healthPoints){
-        this.healthPoints+=healthPoints;
     }
     public Coordinate GetCoordinate(){
         return coordinate;
@@ -43,4 +42,14 @@ public class Actor {
     public int GetSpeed(){
         return speed;
     }
+    /**
+     * Method to increase/decrease player health
+     */
+    public void AddHealthPoints(int healthPointsAdd){
+        this.healthPoints+=healthPointsAdd;
+    }
+    /**
+     * Methods for Player Movement
+     */
+
 }
