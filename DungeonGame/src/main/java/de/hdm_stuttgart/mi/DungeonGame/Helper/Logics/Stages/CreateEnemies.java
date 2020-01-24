@@ -26,7 +26,7 @@ public class CreateEnemies {
         ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
         for(int enemycount = 1; enemycount < FreeTiles.freeTiles(room).size() / 15; enemycount++) {
             int enemyCoordinate = (int) (Math.random() * availableTiles.size());
-            enemies.add(new Enemy(availableTiles.get(enemyCoordinate)));
+            //enemies.add(new Enemy(availableTiles.get(enemyCoordinate)));
             availableTiles.remove(enemyCoordinate);
         }
         return enemies;

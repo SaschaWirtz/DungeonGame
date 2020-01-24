@@ -58,4 +58,15 @@ public class Coordinate {
     public void setyCoordinate(int yCoordinate) {
         this.yCoordinate = yCoordinate;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Coordinate c=(Coordinate)obj;
+        if(xCoordinate==c.xCoordinate&&yCoordinate==c.yCoordinate){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

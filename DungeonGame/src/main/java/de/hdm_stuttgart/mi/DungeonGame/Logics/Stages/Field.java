@@ -17,7 +17,7 @@ import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
 
 
 public class Field {
-    private static Player player = new Player();
+    private static Player player = new Player(new Coordinate(0,0));
     private static Room room = new Room(Difficulty.Medium, new Entry(new Coordinate(1, 1), Directions.Top, Boolean.TRUE) );
 
 
