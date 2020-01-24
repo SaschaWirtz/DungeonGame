@@ -4,18 +4,19 @@
  * The main screen singleton class printing the current buffered screen with it's content.
  *
  * author: Andreas G.
- * last edit / by: 2020-01-23 / Andreas G
+ * last edit / by: 2020-01-24 / Andreas G
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
 //Import statements
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Graphics.Console;
 import org.jline.terminal.*;
+import java.io.Reader;
 
 /**
  * The main screen singleton class printing the current buffered screen with it's content
  */
-class Screen {
+public class Screen {
     //----- Instance variables -----//
 
     /**
@@ -23,6 +24,11 @@ class Screen {
      * The height and with depends on terminal with and height.
      */
     private char[][] screenBuffer;
+
+    /**
+     * Property containing the virtual terminal object.
+     */
+    private Terminal terminal;
 
 
 
@@ -42,6 +48,14 @@ class Screen {
      * Private constructor initializing the screenBuffer array.
      */
     private Screen() {
+        try {
+            //Initializing the virtual terminal
+            terminal = TerminalBuilder.terminal();
+            terminal.enterRawMode();
+        } catch (Exception e) {
+            //ToDo: Creating a logical and secure catch routine
+        }
+
         //Initializing the screenBuffer
         resetScreenBuffer();
     }
@@ -56,7 +70,7 @@ class Screen {
     private void resetScreenBuffer() {
         try {
             //Setting the buffer height and width to current terminal size
-            screenBuffer = new char[TerminalBuilder.terminal().getHeight()][TerminalBuilder.terminal().getWidth()];
+            screenBuffer = new char[terminal.getHeight()][terminal.getWidth()];
         } catch (Exception e) {
             //ToDo: Creating a logical and secure catch routine
         }
@@ -68,6 +82,8 @@ class Screen {
      * @return The current screen buffer height
      */
     public int getScreenBufferHeight() {
+        resetScreenBuffer();
+
         return this.screenBuffer.length;
     }
 
@@ -77,6 +93,8 @@ class Screen {
      * @return The current screen buffer width
      */
     public int getScreenBufferWidth() {
+        resetScreenBuffer();
+
         return this.screenBuffer[0].length;
     }
 
@@ -112,7 +130,27 @@ class Screen {
         System.out.println(sb.toString());
     }
 
+    /**
+     * Method providing the key reader for current terminal
+     *
+     * @return The key reader for current terminal
+     */
+    public Reader getScreenReader() {
+        //Return a terminal reader for key events
+        return terminal.reader();
+    }
 
+    /**
+     * Method closing the connection to current terminal for virtual terminal instance
+     */
+    public void closeTerminalConnection() {
+        try {
+            //Close the terminal connection
+            terminal.close();
+        } catch (Exception e) {
+            //ToDo: Creating a logical and secure catch routine
+        }
+    }
 
     //----- Class methods -----//
 
@@ -129,35 +167,5 @@ class Screen {
 
         //Return the instance
         return screenInstance;
-    }
-
-    /**
-     * Get the current terminals height.
-     *
-     * @return The terminals height
-     */
-    public static int getScreenHeight() {
-        try {
-            return TerminalBuilder.terminal().getHeight();
-        } catch (Exception e) {
-            //ToDo: Creating a logical and secure catch routine
-        }
-
-        return -1;
-    }
-
-    /**
-     * Get the current terminals width
-     *
-     * @return The terminals width
-     */
-    public static int getScreenWidth() {
-        try {
-            return TerminalBuilder.terminal().getWidth();
-        } catch (Exception e) {
-            //ToDo: Creating a logical and secure catch routine
-        }
-
-        return -1;
     }
 }

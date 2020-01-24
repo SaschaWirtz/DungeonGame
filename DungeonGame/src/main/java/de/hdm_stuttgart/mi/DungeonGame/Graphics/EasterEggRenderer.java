@@ -5,7 +5,7 @@
  * Runnable only within Graphics package.
  *
  * author: Andreas G.
- * last edit / by: 2020-01-23 / Andreas G.
+ * last edit / by: 2020-01-24 / Andreas G.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
@@ -16,7 +16,7 @@ import de.hdm_stuttgart.mi.DungeonGame.Graphics.Interfaces.IRenderable;
 /**
  * Static class used to render a in game EasterEgg screen.
  */
-class EasterEggRenderer extends Renderer implements IRenderable {
+public class EasterEggRenderer extends Renderer implements IRenderable {
     /**
      * A const string visualising Andreas G. as graffity
       */
@@ -98,8 +98,8 @@ class EasterEggRenderer extends Renderer implements IRenderable {
      */
     private void appearName(char[][] nameCharBuffer) {
         //Buffering the current screen size
-        this.bufferHeight = Screen.getScreenHeight();
-        this.bufferWidth = Screen.getScreenWidth();
+        this.bufferHeight = Screen.getInstance().getScreenBufferHeight();
+        this.bufferWidth = Screen.getInstance().getScreenBufferWidth();
 
         //Creating a new buffer array
         this.screenBuffer = this.getNewEmptyScreenBuffer(this.bufferHeight, this.bufferWidth);

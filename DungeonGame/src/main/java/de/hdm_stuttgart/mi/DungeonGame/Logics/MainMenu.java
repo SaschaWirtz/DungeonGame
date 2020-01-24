@@ -151,4 +151,13 @@ public class MainMenu {
     public String[] getMenuItems() {
         return this.ITEMS;
     }
+
+    /**
+     * Resetting the state variables because the event has been triggered
+     */
+    public void resetState() {
+        this.gameActive = false;
+        this.easterEggActive = false;
+        this.shutdownActive = false;
+    }
 }

@@ -9,9 +9,8 @@
 package de.hdm_stuttgart.mi.DungeonGame;
 
 //Import statements
+import de.hdm_stuttgart.mi.DungeonGame.Graphics.Screen;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Graphics.Console;
-import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
 import java.io.Reader;
 
 /**
@@ -29,15 +28,13 @@ public class Main {
 
         //The main key reader loop
         try {
-            //Creating reader and terminal object and change terminal to raw mode
-            Terminal terminal = TerminalBuilder.terminal();
-            terminal.enterRawMode();
-            Reader reader = terminal.reader();
+            //Getting the reader instance
+            Reader reader = Screen.getInstance().getScreenReader();
 
             //The games main loop
             while (true) {
                 //Read a new key code
-                int test = reader.read();
+                int input = reader.read();
 
                 //ToDo: Handle the key code input
             }

@@ -10,8 +10,6 @@ package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
 //Import statements
 import de.hdm_stuttgart.mi.DungeonGame.Graphics.Interfaces.IRenderable;
-
-import java.awt.*;
 import java.util.Arrays;
 
 /**
@@ -39,7 +37,7 @@ public class MainMenuRenderer extends Renderer implements IRenderable {
     @Override
     public void render() {
         //Initializing the screen buffer
-        this.screenBuffer = this.getNewEmptyScreenBuffer(Screen.getScreenHeight(),Screen.getScreenWidth());
+        this.screenBuffer = this.getNewEmptyScreenBuffer(Screen.getInstance().getScreenBufferHeight(),Screen.getInstance().getScreenBufferWidth());
 
         //Variable for all the start indexes of the buttons
         int[] startIndexesVertical = new int[BUTTONS.length];
@@ -47,7 +45,7 @@ public class MainMenuRenderer extends Renderer implements IRenderable {
         //Filling the start indexes
         for (int i = 0; i < startIndexesVertical.length; i++) {
             //Helper/Buffer variables
-            int heightSpacesBetween = (this.screenBuffer.length - (BUTTONS.length*5))/(BUTTONS.length+1);
+            int heightSpacesBetween = (this.screenBuffer.length - (BUTTONS.length*5))/(BUTTONS.length+1) + 1;
             int startIndexBuffer = 0;
 
             //Adding the space of the buttons on top of the current one
@@ -58,7 +56,6 @@ public class MainMenuRenderer extends Renderer implements IRenderable {
 
             //Adding the space for the current button
             startIndexBuffer += heightSpacesBetween;
-            startIndexBuffer += 5;
 
             //Storing the result
             startIndexesVertical[i] = startIndexBuffer;
@@ -69,16 +66,19 @@ public class MainMenuRenderer extends Renderer implements IRenderable {
         for (char[][] BUTTON:BUTTONS) {
             //Calculate the horizontal start index for the current button
             int startIndexHorizontal = ((this.screenBuffer[0].length-1)/2)-((BUTTON[0].length-1)/2);
+            char[][] button;
 
             //Change the current button visual with the visual for a selected button if selected
             if (buttonCounter == selected) {
-                BUTTON = this.getButtonAsSelected(BUTTON);
+                button = this.getButtonAsSelected(BUTTON);
+            } else {
+                button = BUTTON;
             }
 
             //Positioning the button correctly on the screen
-            for (int i = startIndexesVertical[buttonCounter]; i < BUTTON.length + startIndexesVertical[buttonCounter]; i++) {
-                for (int z = startIndexHorizontal; z < BUTTON[i-startIndexesVertical[buttonCounter]].length + startIndexHorizontal; z++) {
-                    this.screenBuffer[i][z] = BUTTON[i-startIndexesVertical[buttonCounter]][z-startIndexHorizontal];
+            for (int i = startIndexesVertical[buttonCounter]; i < button.length + startIndexesVertical[buttonCounter]; i++) {
+                for (int z = startIndexHorizontal; z < button[i-startIndexesVertical[buttonCounter]].length + startIndexHorizontal; z++) {
+                    this.screenBuffer[i][z] = button[i-startIndexesVertical[buttonCounter]][z-startIndexHorizontal];
                 }
             }
 
@@ -124,7 +124,7 @@ public class MainMenuRenderer extends Renderer implements IRenderable {
             this.BUTTONS[i] = this.getNewEmptyScreenBuffer(5, tempItemBuffer.length+4);
 
             //Calculating the begin index for centering the name within the scratch object
-            int beginIndexHorizontal = ((this.BUTTONS[i].length-1)/2)-((tempItemBuffer.length-1)/2);
+            int beginIndexHorizontal = 2;
 
             //Positioning the name in the middle of the button scratch object
             for (int z = beginIndexHorizontal; z < tempItemBuffer.length + beginIndexHorizontal; z++) {
@@ -141,7 +141,7 @@ public class MainMenuRenderer extends Renderer implements IRenderable {
      */
     private char[][] getButtonAsSelected(final char[][] SOURCE_BUTTON) {
         //Creating a copy of the two dimensional char array
-        char[][] resultBuffer = SOURCE_BUTTON;
+        char[][] resultBuffer = Arrays.stream(SOURCE_BUTTON).map(char[]::clone).toArray(char[][]::new);
 
         //Drawing the border
         for (int i = 0; i < resultBuffer.length; i++) {
@@ -153,7 +153,7 @@ public class MainMenuRenderer extends Renderer implements IRenderable {
             } else {
                 //Draw all the other lines
                 resultBuffer[i][0] = '#';
-                resultBuffer[i][resultBuffer.length-1] = '#';
+                resultBuffer[i][resultBuffer[i].length-1] = '#';
             }
         }
 
