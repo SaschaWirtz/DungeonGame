@@ -21,8 +21,8 @@ public class Player extends Actor {
      * returns true if movement was possible
      */
     public boolean MoveUp(){
-        if(Field.getRoom().getFieldType(coordinate.getxCoordinate(),coordinate.getyCoordinate()+1).isWalkable()){
-            coordinate.addyCoordinate(1);
+        if(Field.getRoom().getFieldType(coordinate.getxCoordinate(),coordinate.getyCoordinate()-1).isWalkable()){
+            coordinate.addyCoordinate(-1);
             return true;
         }
         else{
@@ -30,8 +30,8 @@ public class Player extends Actor {
         }
     }
     public boolean MoveDown(){
-        if(Field.getRoom().getFieldType(coordinate.getxCoordinate(),coordinate.getyCoordinate()-1).isWalkable()){
-            coordinate.addyCoordinate(-1);
+        if(Field.getRoom().getFieldType(coordinate.getxCoordinate(),coordinate.getyCoordinate()+1).isWalkable()){
+            coordinate.addyCoordinate(1);
             return true;
         }
         else{
