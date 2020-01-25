@@ -200,7 +200,7 @@ public class Room {
             Field.setRoom(new Room(Difficulty.Medium, getEntry()));
         }else if(playerTileEquelsEnemyTile) {
             while(playerTileEquelsEnemyTile == true) {
-//                startFight();
+                Field.getPlayer().SetHealthPoints(Field.getPlayer().GetHealthPoints() - 10);
                 enemies.remove(enemyConter);
                 playerTileEquelsEnemyTile = false;
                 for(int enemy = 0; enemy < enemies.size(); enemy++) {
