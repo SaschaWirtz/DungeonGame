@@ -5,7 +5,7 @@
  * Runnable only within Graphics package.
  *
  * author: Andreas G.
- * last edit / by: 2020-01-24 / Andreas G.
+ * last edit / by: 2020-01-25 / Andreas G.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
@@ -81,10 +81,22 @@ class EasterEggRenderer extends Renderer implements IRenderable {
      */
     @Override
     public void render() {
+        boolean left = true;
+        int counter = 0;
+
         //Let all the contributors appear
         for (Contributor contributor:Contributor.values()) {
-            //Just appear the name
-            appearName(asciiChars[contributor.getId()]);
+            if (counter%2==0) {
+                //Just appear the name
+                appearName(asciiChars[contributor.getId()]);
+            } else {
+                //Animate the name
+                slideInName(asciiChars[contributor.getId()], left);
+                left = !left;
+            }
+
+            //Increase the counter
+            counter++;
 
             //Wait for 3 seconds
             this.sleep(3000);
@@ -121,6 +133,83 @@ class EasterEggRenderer extends Renderer implements IRenderable {
 
         //Printing the result to the screen
         this.printScreen();
+    }
+
+    /**
+     * Slide in the name provided as char array graffity
+     *
+     * @param nameCharBuffer The name as char array graffity
+     */
+    private void slideInName(char[][] nameCharBuffer, final boolean LEFT) {
+        //Buffering the current screen size
+        this.bufferHeight = Screen.getInstance().getScreenBufferHeight();
+        this.bufferWidth = Screen.getInstance().getScreenBufferWidth();
+
+        //Creating a new buffer array
+        this.screenBuffer = this.getNewEmptyScreenBuffer(this.bufferHeight, this.bufferWidth);
+
+        //Set if animation starts left or right
+        if (LEFT) {
+            final int ANIMATION_START = -nameCharBuffer[0].length;
+
+            for (int x = ANIMATION_START; x <= ((this.screenBuffer[0].length-1)/2)-((nameCharBuffer[0].length-1)/2); x++) {
+                //Creating a new buffer array
+                this.screenBuffer = this.getNewEmptyScreenBuffer(this.bufferHeight, this.bufferWidth);
+
+                if (screenBuffer[0].length >= nameCharBuffer[0].length && screenBuffer.length >= nameCharBuffer.length) {
+                    //Calculating the begin index for centering the name within the screen buffer
+                    int beginIndexHorizontal = x;
+                    int beginIndexVertical = ((this.screenBuffer.length-1)/2)-((nameCharBuffer.length-1)/2);
+
+                    //Positioning the name in the middle of the screen buffer
+                    for (int i = beginIndexVertical; i < nameCharBuffer.length + beginIndexVertical; i++) {
+                        for (int z = beginIndexHorizontal; z < nameCharBuffer[i-beginIndexVertical].length + beginIndexHorizontal; z++) {
+                            if (z >= 0 && z-beginIndexHorizontal >= 0) {
+                                this.screenBuffer[i][z] = nameCharBuffer[i-beginIndexVertical][z-beginIndexHorizontal];
+                            }
+                        }
+                    }
+                } else {
+                    //ToDo: Printing if screen is too small.
+                }
+
+                //Printing the result to the screen
+                this.printScreen();
+
+                //Sleep for short time
+                this.sleep(1000/24);
+            }
+        } else {
+            final int ANIMATION_START = screenBuffer[0].length;
+
+            for (int x = ANIMATION_START; x >= ((this.screenBuffer[0].length-1)/2)-((nameCharBuffer[0].length-1)/2); x--) {
+                //Creating a new buffer array
+                this.screenBuffer = this.getNewEmptyScreenBuffer(this.bufferHeight, this.bufferWidth);
+
+                if (screenBuffer[0].length >= nameCharBuffer[0].length && screenBuffer.length >= nameCharBuffer.length) {
+                    //Calculating the begin index for centering the name within the screen buffer
+                    int beginIndexHorizontal = x;
+                    int beginIndexVertical = ((this.screenBuffer.length-1)/2)-((nameCharBuffer.length-1)/2);
+
+                    //Positioning the name in the middle of the screen buffer
+                    for (int i = beginIndexVertical; i < nameCharBuffer.length + beginIndexVertical; i++) {
+                        for (int z = beginIndexHorizontal; z < nameCharBuffer[i-beginIndexVertical].length + beginIndexHorizontal; z++) {
+                            if (z < screenBuffer[i].length && z-beginIndexHorizontal < screenBuffer[i].length) {
+                                this.screenBuffer[i][z] = nameCharBuffer[i-beginIndexVertical][z-beginIndexHorizontal];
+                            }
+                        }
+                    }
+                } else {
+                    //ToDo: Printing if screen is too small.
+                }
+
+                //Printing the result to the screen
+                this.printScreen();
+
+                //Sleep for short time
+                this.sleep(1000/24);
+            }
+        }
     }
 
     /**
