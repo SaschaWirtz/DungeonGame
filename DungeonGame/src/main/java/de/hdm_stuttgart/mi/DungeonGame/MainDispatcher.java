@@ -4,7 +4,7 @@
  * Main dispatcher controlling and triggering the rendering processes and logics processes
  *
  * author: Andreas G.
- * last edit / by: 2020-01-24 / Andreas G.
+ * last edit / by: 2020-01-25 / Andreas G.
  */
 package de.hdm_stuttgart.mi.DungeonGame;
 
@@ -41,13 +41,8 @@ public class MainDispatcher {
         //Changing the current state to main menu
         state = ApplicationState.MainMenu;
 
-        //Dipatching the main menu
-        AtomicReference<String[]> items = new AtomicReference<String[]>(null);
-        AtomicReference<Integer> selected = new AtomicReference<Integer>(0);
-
-        logicsDispatcher.init(items, selected);
-
-        graphicsDispatcher.triggerMainMenuRenderer(items.get(), selected.get());
+        //Initially handle the main menu
+        dispatchMainMenu(-1);
     }
 
     /**
@@ -57,28 +52,55 @@ public class MainDispatcher {
      * @return True if application is still running
      */
     public boolean dispatch(final int KEY_INPUT) {
-        //Checking all the possible key events
+        //Checking the terminate key event
         if (KEY_INPUT == KeyCode.ButtonESC.getValue()) {
             //Please close the application
             return false;
+        } else {
+            //Trigger the correct dispatch process
+            if (state == ApplicationState.MainMenu) {
+                dispatchMainMenu(KEY_INPUT);
+            }
 
+            if (state == ApplicationState.PendingExit) {
+                return false;
+            }
+
+            //Please continue application execution
+            return true;
         }
-
-        //Debug
-        System.out.println("Test");
-
-        return true;
     }
 
     /**
      * Method dispatching the main menu processes
      */
-    public void dispatchMainMenu() {
+    public void dispatchMainMenu(final int KEY_INPUT) {
+        //Get reference types for logics dispatcher
         AtomicReference<String[]> items = new AtomicReference<String[]>(null);
         AtomicReference<Integer> selected = new AtomicReference<Integer>(0);
 
-        logicsDispatcher.init(items, selected);
+        //Handling the logic of main menu
+        logicsDispatcher.dispatchMainMenu(this, items, selected, KEY_INPUT);
 
-        graphicsDispatcher.triggerMainMenuRenderer(selected.get());
+        if (state == ApplicationState.EasterEgg) {
+            graphicsDispatcher.triggerEasterEggRenderer();
+
+            state = ApplicationState.MainMenu;
+
+            //Printing the graphics of main menu
+            graphicsDispatcher.triggerMainMenuRenderer(items.get(), selected.get());
+        } else if (state == ApplicationState.MainMenu) {
+            //Printing the graphics of main menu
+            graphicsDispatcher.triggerMainMenuRenderer(items.get(), selected.get());
+        }
+    }
+
+    /**
+     * Change the current application state
+     *
+     * @param state The new state of the application
+     */
+    public void setState(final ApplicationState state) {
+        this.state = state;
     }
 }

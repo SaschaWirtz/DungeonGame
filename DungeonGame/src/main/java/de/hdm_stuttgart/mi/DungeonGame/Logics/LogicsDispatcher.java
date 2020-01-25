@@ -4,11 +4,14 @@
  * Main class dispatching all the logics processes
  *
  * author: Andreas G.
- * last edit / by: 2020-01-24 / Andreas G.
+ * last edit / by: 2020-01-25 / Andreas G.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics;
 
 //Import statements
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Enums.ApplicationState;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Enums.KeyCode;
+import de.hdm_stuttgart.mi.DungeonGame.MainDispatcher;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -31,12 +34,40 @@ public class LogicsDispatcher {
      * @param items The reference type forwarding the menu items
      * @param selected The reference type forwarding the id of the selected item
      */
-    public void init(AtomicReference<String[]> items, AtomicReference<Integer> selected) {
+    public void dispatchMainMenu(MainDispatcher mainDispatcher, AtomicReference<String[]> items, AtomicReference<Integer> selected, final int KEY_INPUT) {
         //Creating a new main menu
-        mainMenu = new MainMenu();
+        if (mainMenu == null) {
+            mainMenu = new MainMenu();
 
-        //Get the initial information
-        items.set(mainMenu.getMenuItems());
-        selected.set(mainMenu.getCurrentSelection());
+            //Get the initial information
+            items.set(mainMenu.getMenuItems());
+            selected.set(mainMenu.getCurrentSelection());
+        } else {
+            if (KEY_INPUT == KeyCode.ButtonW.getValue()) {
+                mainMenu.selectionMoveUp();
+            } else if (KEY_INPUT == KeyCode.ButtonS.getValue()) {
+                mainMenu.selectionMoveDown();
+            } else if (KEY_INPUT == KeyCode.ButtonENTER.getValue()) {
+                mainMenu.select();
+            } else {
+
+            }
+
+            //Get the initial information
+            items.set(mainMenu.getMenuItems());
+            selected.set(mainMenu.getCurrentSelection());
+
+            if (mainMenu.getEasterEggState()) {
+                mainDispatcher.setState(ApplicationState.EasterEgg);
+                mainMenu.resetState();
+                return;
+            }
+
+            if (mainMenu.getShutdownState()) {
+                mainDispatcher.setState(ApplicationState.PendingExit);
+                mainMenu.resetState();
+                return;
+            }
+        }
     }
 }
