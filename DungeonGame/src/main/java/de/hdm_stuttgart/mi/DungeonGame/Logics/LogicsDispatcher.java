@@ -35,14 +35,15 @@ public class LogicsDispatcher {
      * @param selected The reference type forwarding the id of the selected item
      */
     public void dispatchMainMenu(MainDispatcher mainDispatcher, AtomicReference<String[]> items, AtomicReference<Integer> selected, final int KEY_INPUT) {
-        //Creating a new main menu
         if (mainMenu == null) {
+            //Creating a new main menu
             mainMenu = new MainMenu();
 
             //Get the initial information
             items.set(mainMenu.getMenuItems());
             selected.set(mainMenu.getCurrentSelection());
         } else {
+            //Do the logics referred to the key input
             if (KEY_INPUT == KeyCode.ButtonW.getValue()) {
                 mainMenu.selectionMoveUp();
             } else if (KEY_INPUT == KeyCode.ButtonS.getValue()) {
@@ -53,20 +54,28 @@ public class LogicsDispatcher {
 
             }
 
-            //Get the initial information
+            //Get the new information
             items.set(mainMenu.getMenuItems());
             selected.set(mainMenu.getCurrentSelection());
 
+            //Check if easter egg should be triggered
             if (mainMenu.getEasterEggState()) {
                 mainDispatcher.setState(ApplicationState.EasterEgg);
                 mainMenu.resetState();
                 return;
             }
 
+            //Check if application should be closed
             if (mainMenu.getShutdownState()) {
                 mainDispatcher.setState(ApplicationState.PendingExit);
                 mainMenu.resetState();
                 return;
+            }
+
+            //Check if game start should be triggered
+            if (mainMenu.getStartGameState()) {
+                mainDispatcher.setState(ApplicationState.Field);
+                mainMenu = null;
             }
         }
     }

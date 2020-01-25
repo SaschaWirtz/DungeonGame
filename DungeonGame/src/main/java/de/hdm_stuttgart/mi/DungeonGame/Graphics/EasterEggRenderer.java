@@ -177,7 +177,7 @@ class EasterEggRenderer extends Renderer implements IRenderable {
                 this.printScreen();
 
                 //Sleep for short time
-                this.sleep(1000/24);
+                this.sleep(1000/30);
             }
         } else {
             final int ANIMATION_START = screenBuffer[0].length;
@@ -207,7 +207,7 @@ class EasterEggRenderer extends Renderer implements IRenderable {
                 this.printScreen();
 
                 //Sleep for short time
-                this.sleep(1000/24);
+                this.sleep(1000/30);
             }
         }
     }

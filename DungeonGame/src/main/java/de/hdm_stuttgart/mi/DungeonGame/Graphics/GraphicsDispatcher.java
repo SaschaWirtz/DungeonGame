@@ -57,6 +57,7 @@ public class GraphicsDispatcher {
             easterEggRenderer = new EasterEggRenderer();
         }
 
+        //Render the screen
         easterEggRenderer.render();
     }
 }
