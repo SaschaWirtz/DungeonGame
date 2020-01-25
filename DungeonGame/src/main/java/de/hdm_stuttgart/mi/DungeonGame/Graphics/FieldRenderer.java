@@ -41,14 +41,31 @@ public class FieldRenderer extends Renderer implements IRenderable {
                 screenBuffer[hight][width] = fieldSpace[hight][width];
             }
         }
+        inventorySpace();
+        for(int hight = 0; hight < inventorySpace.length; hight++) {
+            int screenWidth = bufferWidth - inventorySpace[0].length;
+            for(int width = 0; width < inventorySpace[0].length; width++) {
+                screenBuffer[hight][screenWidth] = inventorySpace[hight][width];
+                screenWidth++;
+            }
+        }
+        statusSpace();
+        int screenHight = bufferHeight - statusSpace.length;
+        for(int hight = 0; hight < statusSpace.length; hight++) {
+            for(int width = 0; width < statusSpace[0].length; width++) {
+                screenBuffer[screenHight][width] = statusSpace[hight][width];
+            }
+            screenHight++;
+        }
         this.printScreen();
     }
 
     /**
      * Method to feed FieldRenderer the needed data
-     * @param room
-     * @param inventory
-     * @param player
+     *
+     * @param room from Field
+     * @param inventory from Inventory
+     * @param player from Inventory
      */
     public void setRenderer(FieldType[][] room, Inventory inventory, Player player) {
         this.bufferHeight= Screen.getInstance().getScreenBufferHeight();
@@ -62,8 +79,8 @@ public class FieldRenderer extends Renderer implements IRenderable {
      * Method to fill the fieldSpace with room-data
      */
     private char[][] fieldSpace() {
-        fieldSpace = new char[bufferHeight - 9][bufferWidth / 3 * 2];
-//        for(int  = 0, spaceHight < )
+        fieldSpace = getNewEmptyScreenBuffer(bufferHeight - 9, bufferWidth / 4 * 3);
+        adBorder(fieldSpace);
 //        char[][] fieldBuffer = new char[][];
         return fieldSpace;
     }
@@ -72,7 +89,8 @@ public class FieldRenderer extends Renderer implements IRenderable {
      * Method to fill the inventorySpace with inventory-data
      */
     private char[][] inventorySpace() {
-        inventorySpace = new char[bufferHeight - 9][bufferWidth / 3];
+        inventorySpace = getNewEmptyScreenBuffer(bufferHeight - 9, bufferWidth - fieldSpace[0].length);
+        adBorder(inventorySpace);
         return inventorySpace;
     }
 
@@ -80,7 +98,28 @@ public class FieldRenderer extends Renderer implements IRenderable {
      * Method to fill the statusSpace with status-data
      */
     private char[][] statusSpace() {
-        statusSpace = new char[9][bufferWidth];
+        statusSpace = getNewEmptyScreenBuffer(9, bufferWidth);
+        adBorder(statusSpace);
         return statusSpace;
+    }
+
+    /**
+     * Method to add a border to a specific space
+     *
+     * @param space to border
+     */
+    private void adBorder(char[][] space) {
+        for(int spaceHight = 0; spaceHight < space.length - 1; spaceHight++) {
+            space[spaceHight][0] = 'O';
+        }
+        for(int spaceHight = 1; spaceHight < space.length - 1; spaceHight++) {
+            space[spaceHight][space[0].length - 1] = 'O';
+        }
+        for(int spaceWidth = 0; spaceWidth < space[0].length; spaceWidth++) {
+            space[space.length - 1][spaceWidth] = 'O';
+        }
+        for(int spaceWidth = 1; spaceWidth < space[0].length; spaceWidth++) {
+            space[0][spaceWidth] = 'O';
+        }
     }
 }
