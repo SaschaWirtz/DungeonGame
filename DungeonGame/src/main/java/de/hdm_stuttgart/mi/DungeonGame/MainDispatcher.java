@@ -54,15 +54,28 @@ public class MainDispatcher {
     public boolean dispatch(final int KEY_INPUT) {
         //Checking the terminate key event
         if (KEY_INPUT == KeyCode.ButtonESC.getValue()) {
-            //Please close the application
-            return false;
+            if (state == ApplicationState.Field || state == ApplicationState.Fight) {
+                //Go back to main menu
+                //Changing the current state to main menu
+                state = ApplicationState.MainMenu;
+
+                //Initially handle the main menu
+                dispatchMainMenu(-1);
+
+                return true;
+            } else {
+                //Please close the application
+                return false;
+            }
         } else {
             //Trigger the correct dispatch process
             if (state == ApplicationState.MainMenu) {
                 dispatchMainMenu(KEY_INPUT);
             }
 
+            //Check if state has changed to PendingExit after dispatching
             if (state == ApplicationState.PendingExit) {
+                //Please close the application
                 return false;
             }
 
@@ -83,8 +96,10 @@ public class MainDispatcher {
         logicsDispatcher.dispatchMainMenu(this, items, selected, KEY_INPUT);
 
         if (state == ApplicationState.EasterEgg) {
+            //Render the easter egg
             graphicsDispatcher.triggerEasterEggRenderer();
 
+            //Chance state back to main menu
             state = ApplicationState.MainMenu;
 
             //Printing the graphics of main menu

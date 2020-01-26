@@ -4,7 +4,7 @@
  * Renderer responsible for generating the main menu graphics
  *
  * author: Andreas G.
- * last edit / by: 2020-01-24 / Andreas G.
+ * last edit / by: 2020-01-25 / Andreas G.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
@@ -148,12 +148,12 @@ class MainMenuRenderer extends Renderer implements IRenderable {
             if (i == 0 || i == resultBuffer.length-1) {
                 //Draw for first and last line
                 for (int z = 0; z < resultBuffer[i].length; z++) {
-                    resultBuffer[i][z] = '#';
+                    resultBuffer[i][z] = 'O';
                 }
             } else {
                 //Draw all the other lines
-                resultBuffer[i][0] = '#';
-                resultBuffer[i][resultBuffer[i].length-1] = '#';
+                resultBuffer[i][0] = 'O';
+                resultBuffer[i][resultBuffer[i].length-1] = 'O';
             }
         }
 
