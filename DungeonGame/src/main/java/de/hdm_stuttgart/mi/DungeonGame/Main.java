@@ -25,7 +25,7 @@ public class Main {
     /**
      * Class property providing the main dispatcher of the application
      */
-    private static MainDispatcher mainDispatcher = new MainDispatcher();
+    private static MainDispatcher mainDispatcher;
 
     /**
      * The main entry point for the DungeonGame.
@@ -35,6 +35,9 @@ public class Main {
     public static void main(String[] args) {
         //Ensuring that the screen is cleared. Please do not remove this line.
         Console.clear();
+
+        //Initializing the main dispatcher
+        mainDispatcher = new MainDispatcher();
 
         //Catching the possible IO exception
         try {

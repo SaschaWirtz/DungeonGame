@@ -4,7 +4,7 @@
  * Class for room creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-24 / Sascha W.
+ * last edit / by: 2020-01-26 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -28,9 +28,9 @@ public class Room {
     //Attributes
 
     //random FieldType hight
-    private final int HIGHT = (int) (Math.random() * 9) + 6;
+    private final int HIGHT = (int) (Math.random() * 44) + 6;
     //random FieldType width
-    private final int WIDTH = (int) (Math.random() * 19) + 6;
+    private final int WIDTH = (int) (Math.random() * 44) + 6;
     //new entry
     private Entry entry;
     //List with all entrys
@@ -199,8 +199,34 @@ public class Room {
 
             Field.setRoom(new Room(Difficulty.Medium, getEntry()));
         }else if(playerTileEquelsEnemyTile) {
-//            startFight();
-            enemies.remove(enemyConter);
+            while(playerTileEquelsEnemyTile == true) {
+                Field.getPlayer().SetHealthPoints(Field.getPlayer().GetHealthPoints() - 10);
+                enemies.remove(enemyConter);
+                playerTileEquelsEnemyTile = false;
+                for(int enemy = 0; enemy < enemies.size(); enemy++) {
+                    if(Field.getPlayer().GetCoordinate().equals(enemies.get(enemy).GetCoordinate()) ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() + 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() + 1 ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() ||
+                        Field.getPlayer().GetCoordinate().getxCoordinate() == enemies.get(enemy).GetCoordinate().getxCoordinate() - 1 &&
+                        Field.getPlayer().GetCoordinate().getyCoordinate() == enemies.get(enemy).GetCoordinate().getyCoordinate() - 1) {
+                        playerTileEquelsEnemyTile = true;
+                        enemyConter = enemy;
+                    }
+                }
+            }
+
         }
         //ToDo: An Laras Klassen anpassen
     }
