@@ -4,7 +4,7 @@
  * Main class for Room and Player managing.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-24 / Sascha W.
+ * last edit / by: 2020-01-26 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -18,7 +18,7 @@ import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
 
 
 public class Field {
-    private static Player player = new Player(new Coordinate(0,0));
+    private static Player player = new Player(new Coordinate(1,1));
     private static Inventory inventory = new Inventory();
     private static Room room = new Room(Difficulty.Medium, new Entry(new Coordinate(1, 1), Directions.Top, Boolean.TRUE) );
 

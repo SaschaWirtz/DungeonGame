@@ -4,7 +4,7 @@
  * Inventory of the player for items (potions/coins/other items)
  *
  * author: Micha H.
- * last edit / by: 2019-01-22 / Micha H.
+ * last edit / by: 2020-01-29 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors;
 
@@ -19,7 +19,7 @@ public class Inventory {
      * coins - array of the coins. Stores objects of the class Coin. Array size: 100.
      * coinsCounter - variable counts the collected coins. Starts at 0.
      */
-    static private Potion[] potions = new Potion[100];  // ToDo: Array size. | Notiz für mich: 100 Felder und nicht feste Potionplätz + Anzahl, weil vllt auch Potions mit anderen Values möglich, die einen eigenen Platz im Array benötigen.
+    static private Potion[] potions = new Potion[7];  // ToDo: Array size. | Notiz für mich: 100 Felder und nicht feste Potionplätz + Anzahl, weil vllt auch Potions mit anderen Values möglich, die einen eigenen Platz im Array benötigen.
     static private int potionsCounter = 0;
     static private Coin coins[] = new Coin[100]; // ToDo: Array size
     static private int coinsCounter = 0;
@@ -63,7 +63,7 @@ public class Inventory {
         }
 
         // potions_tmp - temporarily array to sort array potions.
-        Potion[] potions_tmp = new Potion[100];
+        Potion[] potions_tmp = new Potion[7];
 
         // copies all potion objects from array potions into array potions_tmp without null values
         int potions_tmp_counter = 0;

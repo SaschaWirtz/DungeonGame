@@ -4,7 +4,7 @@
  * The main screen singleton class printing the current buffered screen with it's content.
  *
  * author: Andreas G.
- * last edit / by: 2020-01-24 / Andreas G
+ * last edit / by: 2020-01-26 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
@@ -70,7 +70,7 @@ public class Screen {
     private void resetScreenBuffer() {
         try {
             //Setting the buffer height and width to current terminal size
-            screenBuffer = new char[terminal.getHeight()][terminal.getWidth()];
+            screenBuffer = new char[terminal.getHeight() - 1][terminal.getWidth()];
         } catch (Exception e) {
             //ToDo: Creating a logical and secure catch routine
         }
@@ -119,11 +119,15 @@ public class Screen {
         //Building a screen representing the console screen
         StringBuilder sb = new StringBuilder();
 
-        for (char[] bufferLine : screenBuffer) {
-            for (char bufferChar : bufferLine) {
+        for (int i = 0; i < screenBuffer.length; i++) {
+            for (char bufferChar : screenBuffer[i]) {
                 sb.append(bufferChar);
             }
-            sb.append("\n");
+
+            //Only new line if it's not the last line
+            if (i < screenBuffer.length - 1) {
+                sb.append("\n");
+            }
         }
 
         //Print the String to terminal
