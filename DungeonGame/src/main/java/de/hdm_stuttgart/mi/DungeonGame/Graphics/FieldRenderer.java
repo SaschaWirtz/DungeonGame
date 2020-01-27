@@ -4,7 +4,7 @@
  * Renderer responsible for generating the field graphics
  *
  * author: Sascha W.
- * last edit / by: 2020-01-26 / Sascha W.
+ * last edit / by: 2020-01-27 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Graphics;
 
@@ -109,7 +109,7 @@ public class FieldRenderer extends Renderer implements IRenderable {
         //Fill it with the Wall sign
         for (int hight = 0; hight < fieldBuffer.length; hight++) {
             for (int width = 0; width < fieldBuffer[0].length; width++) {
-                fieldBuffer[hight][width] = FieldType.Wall.getVisual();
+                fieldBuffer[hight][width] = FieldType.Floor.getVisual();
             }
         }
 
@@ -149,15 +149,21 @@ public class FieldRenderer extends Renderer implements IRenderable {
         char[][] inventorySpace = getNewEmptyScreenBuffer(bufferHeight - 9, bufferWidth - START_INDEX);
 
         //Calculating start indexes
-        int startIndexVertical = (inventorySpace.length - Inventory.getPotions().length) / (Inventory.getPotions().length + 1) + 1;
+        int startIndexVertical = (inventorySpace.length - Inventory.getPotions().length + 1) / (Inventory.getPotions().length + 1);
         int startIndexHorizontal = 3;
 
         //Positioning of item slots
-        for(int i = startIndexVertical; i / startIndexVertical < Inventory.getPotions().length + 1; i += startIndexVertical) {
-            char[] currentElement = (Inventory.getPotions()[i / startIndexVertical - 1] == null) ? ("" + (i / startIndexVertical) + ":").toCharArray() : ("" + (i / startIndexVertical) + ": " + Inventory.getPotions()[i / startIndexVertical - 1].getType().getCHARACTER() + " (" + Inventory.getPotions()[i / startIndexVertical - 1].getValue() + ")").toCharArray();
+        for(int i = startIndexVertical; i / startIndexVertical < Inventory.getPotions().length + 2; i += startIndexVertical) {
+            char[] currentElement;
+            if(i / startIndexVertical == inventory.getPotions().length + 1) {
+                currentElement = ("Coins: " + inventory.getCoinsCounter()).toCharArray();
+            }else {
+                currentElement = (Inventory.getPotions()[i / startIndexVertical - 1] == null) ? ("" + (i / startIndexVertical) + ":").toCharArray() : ("" + (i / startIndexVertical) + ": " + Inventory.getPotions()[i / startIndexVertical - 1].getType().getCHARACTER() + " (" + Inventory.getPotions()[i / startIndexVertical - 1].getValue() + ")").toCharArray();
+            }
             for(int z = startIndexHorizontal; z < currentElement.length + startIndexHorizontal; z++) {
                 inventorySpace[i + 1][z] = currentElement[z - startIndexHorizontal];
             }
+
         }
 
         //Add border and return result
@@ -208,12 +214,12 @@ public class FieldRenderer extends Renderer implements IRenderable {
             if (i == 0 || i==space.length - 1) {
                 for (int z = 0; z < space[i].length; z++) {
                     //Fill first and last line
-                    space[i][z] = 'O';
+                    space[i][z] = '+';
                 }
             } else {
                 //Fill the lines in between
-                space[i][0] = 'O';
-                space[i][space[i].length-1] = 'O';
+                space[i][0] = '+';
+                space[i][space[i].length-1] = '+';
             }
         }
     }

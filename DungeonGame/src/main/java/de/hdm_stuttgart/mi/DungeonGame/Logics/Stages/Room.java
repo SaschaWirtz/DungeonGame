@@ -4,7 +4,7 @@
  * Class for room creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-26 / Sascha W.
+ * last edit / by: 2020-01-27 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -121,6 +121,9 @@ public class Room {
      */
 
     public void checkPlayerField() {
+        for(Enemy enemy : enemies) {
+            enemy.NextMove();
+        }
         int coinCounter = 0;
         int itemCounter = 0;
         int entryCounter = 0;

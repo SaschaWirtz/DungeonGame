@@ -13,7 +13,7 @@ public class Actor {
      */
     public Actor(){
         coordinate=new Coordinate(0,0);
-        healthPoints=0;
+        healthPoints=100;
         attack=0;
         defense=0;
         speed=0;

@@ -4,7 +4,7 @@
  * Class to spawn Coins.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-24 / Sascha W.
+ * last edit / by: 2020-01-27 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -24,7 +24,7 @@ public class SetCoins {
     public static ArrayList fillCoinList(FieldType[][] room){
         ArrayList<Coin> coins = new ArrayList<>();
         ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
-        for(int coincount = 0; coincount < FreeTiles.freeTiles(room).size() / 20; coincount++) {
+        for(int coincount = 0; coincount < (Math.random() * (FreeTiles.freeTiles(room).size() / 20)); coincount++) {
             int coinCoordinate = (int) (Math.random() * availableTiles.size());
             coins.add(new Coin(availableTiles.get(coinCoordinate)));
             availableTiles.remove(coinCoordinate);

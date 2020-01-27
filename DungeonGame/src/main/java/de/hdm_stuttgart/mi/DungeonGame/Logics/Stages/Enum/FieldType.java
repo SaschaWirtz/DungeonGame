@@ -4,7 +4,7 @@
  * List of all possible FieldTypes.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-26 / Sascha W.
+ * last edit / by: 2020-01-27 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum;
 
@@ -15,12 +15,12 @@ public enum FieldType {
     /**
      * Player is a FieldType which symbols the Player object
      */
-    Player(true, '@'),
+    Player(false, '@'),
 
     /**
      * Enemy is a FieldType which symbols a Enemy object
      */
-    Enemy(true, '<'),
+    Enemy(false, '<'),
 
     /**
      * Wall is a FiledType which shapes the basic shape of the Field and creates simple walls to interfere with the players path
