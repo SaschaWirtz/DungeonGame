@@ -6,7 +6,7 @@ This project has started as an university development project.
 ## Contributors
 Andreas G. | Moritz W. | Lara B. | Sascha W. | Micha H.     
 ---------- | --------- | ------- | --------- | -------- 
-RenderingEngine | Player | Fight | Field | ItemInventory
+RenderingEngine | Player | Fight + Dispatcher | Field | ItemInventory
 
 ## Features
 * Random level generator
