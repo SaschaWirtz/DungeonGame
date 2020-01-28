@@ -21,6 +21,9 @@ public class FreeTiles {
      * @return List of all FreeTiles
      */
     public static ArrayList<Coordinate> freeTiles(FieldType[][] room) {
+        /**
+         * List to save all Tiles which are a FloorTile
+         */
         ArrayList<Coordinate> freeSpace = new ArrayList<Coordinate>();
         for(int row = 1; row < room.length - 1; row++) {
             for(int column = 1; column < room[0].length - 1; column++) {
