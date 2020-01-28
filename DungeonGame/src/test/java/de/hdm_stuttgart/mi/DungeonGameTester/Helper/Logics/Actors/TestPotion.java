@@ -19,7 +19,7 @@ import org.junit.Test;
 public class TestPotion {
 
     // Main is not a Unit-Test!
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         Potion potion = new Potion(PotionType.HEALTH, 25, new Coordinate(10, 10));
         potion.moveInventory();
@@ -35,7 +35,7 @@ public class TestPotion {
 
         Inventory.printPotions();
 
-    }
+    }*/
 
     @Test
     /**
@@ -96,20 +96,5 @@ public class TestPotion {
             potions = new Potion[7];
         Assert.assertEquals(null, Inventory.getPotions()[0]);
 
-    }
-
-    @Test
-    /**
-     * Unit-Test adds 6 potion to the inventory
-     */
-    public void inventoryOverflow() {
-        Potion potion = new Potion(PotionType.HEALTH, 25, new Coordinate(10, 10));
-        for(int potionAnzahl=0; potionAnzahl<6; potionAnzahl++) {
-            potion.moveInventory();
-        }
-        Assert.assertTrue(Inventory.hasFreeSlot()); // one free slot
-        potion.moveInventory(); // 7th potion.
-        Assert.assertFalse(Inventory.hasFreeSlot()); // no free slot.
-        potion.moveInventory(); // this would be the 8th potion.
     }
 }

@@ -99,9 +99,6 @@ public class Room {
                 }
             }
         }
-        for (int entrycount = 0; entrycount < doorsAndStairs.size(); entrycount++) {
-            room[doorsAndStairs.get(entrycount).getCoordinate().getyCoordinate()][doorsAndStairs.get(entrycount).getCoordinate().getxCoordinate()] = doorsAndStairs.get(entrycount).getFieldType();
-        }
         if(!(items == null)) {
             for (int itemcount = 0; itemcount < items.size(); itemcount++) {
                 room[items.get(itemcount).getCoordinate().getyCoordinate()][items.get(itemcount).getCoordinate().getxCoordinate()] = FieldType.ItemField;
@@ -116,6 +113,9 @@ public class Room {
             for (int enemycount = 0; enemycount < enemies.size(); enemycount++) {
                 room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
             }
+        }
+        for (int entrycount = 0; entrycount < doorsAndStairs.size(); entrycount++) {
+            room[doorsAndStairs.get(entrycount).getCoordinate().getyCoordinate()][doorsAndStairs.get(entrycount).getCoordinate().getxCoordinate()] = doorsAndStairs.get(entrycount).getFieldType();
         }
         room[Field.getPlayer().GetCoordinate().getyCoordinate()][Field.getPlayer().GetCoordinate().getxCoordinate()] = FieldType.Player;
     }
