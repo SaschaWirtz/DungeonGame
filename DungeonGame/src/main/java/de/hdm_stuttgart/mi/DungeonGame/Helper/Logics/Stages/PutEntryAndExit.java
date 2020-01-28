@@ -4,7 +4,7 @@
  * Class to create Doors and Stairs.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-24 / Sascha W.
+ * last edit / by: 2020-01-28 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -45,41 +45,41 @@ public class PutEntryAndExit {
 
         //EntryPosition based on choosen entry.
 
-        switch (entry.direction) {
+        switch (entry.getDirection()) {
             //EntranceDoor int Top Wall
             case Top:
                 putTopDoor();
-                doorsAndStairs.get(0).entrance = true;
+                doorsAndStairs.get(0).setEntrance(true);
                 putRandomExits();
-                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate(), doorsAndStairs.get(0).coordinate.getyCoordinate() + 1));
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).getCoordinate().getxCoordinate(), doorsAndStairs.get(0).getCoordinate().getyCoordinate() + 1));
                 break;
             //EntranceDoor in Right Wall
             case Right:
                 putRightDoor();
-                doorsAndStairs.get(0).entrance = true;
+                doorsAndStairs.get(0).setEntrance(true);
                 putRandomExits();
-                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate() - 1, doorsAndStairs.get(0).coordinate.getyCoordinate()));
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).getCoordinate().getxCoordinate() - 1, doorsAndStairs.get(0).getCoordinate().getyCoordinate()));
                 break;
             //EntranceDoor in Bottom Wall
             case Bottom:
                 putBottomDoor();
-                doorsAndStairs.get(0).entrance = true;
+                doorsAndStairs.get(0).setEntrance(true);
                 putRandomExits();
-                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate(), doorsAndStairs.get(0).coordinate.getyCoordinate() - 1));
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).getCoordinate().getxCoordinate(), doorsAndStairs.get(0).getCoordinate().getyCoordinate() - 1));
                 break;
             //EntranceDoor int Left Wall
             case Left:
                 putLeftDoor();
-                doorsAndStairs.get(0).entrance = true;
+                doorsAndStairs.get(0).setEntrance(true);
                 putRandomExits();
-                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate() + 1, doorsAndStairs.get(0).coordinate.getyCoordinate()));
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).getCoordinate().getxCoordinate() + 1, doorsAndStairs.get(0).getCoordinate().getyCoordinate()));
                 break;
             //EntranceStairs in playfield
             default:
                 putStairs();
-                doorsAndStairs.get(0).entrance = true;
+                doorsAndStairs.get(0).setEntrance(true);
                 putRandomExits();
-                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).coordinate.getxCoordinate() - 1, doorsAndStairs.get(0).coordinate.getyCoordinate()));
+                Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(0).getCoordinate().getxCoordinate() - 1, doorsAndStairs.get(0).getCoordinate().getyCoordinate()));
                 break;
         }
     }
@@ -124,7 +124,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(new Coordinate(column, 0));
             }
         }
-        entry.direction = Directions.Top;
+        entry.setDirection(Directions.Top);
         add(FieldType.Door);
     }
 
@@ -141,7 +141,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(new Coordinate(room[0].length - 1, row));
             }
         }
-        entry.direction = Directions.Right;
+        entry.setDirection(Directions.Right);
         add(FieldType.Door);
     }
 
@@ -158,7 +158,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(new Coordinate(column, room.length - 1));
             }
         }
-        entry.direction = Directions.Bottom;
+        entry.setDirection(Directions.Bottom);
         add(FieldType.Door);
     }
 
@@ -175,7 +175,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(new Coordinate(0, row));
             }
         }
-        entry.direction = Directions.Left;
+        entry.setDirection(Directions.Left);
         add(FieldType.Door);
     }
 
@@ -197,7 +197,7 @@ public class PutEntryAndExit {
                 possibleDoors.add(availableTiles.get(freeTile));
             }
         }
-        entry.direction = Directions.NotDefined;
+        entry.setDirection(Directions.NotDefined);
         add(FieldType.Stairs);
     }
 
@@ -211,7 +211,7 @@ public class PutEntryAndExit {
             EntryPosition = possibleDoors.get((int) (Math.random() * possibleDoors.size()));
             room[EntryPosition.getyCoordinate()][EntryPosition.getxCoordinate()] = tile;
             entryPlaced = true;
-            doorsAndStairs.add(new Entry(EntryPosition, entry.direction, false));
+            doorsAndStairs.add(new Entry(EntryPosition, entry.getDirection(), false, tile));
         }
         possibleDoors = new ArrayList<Coordinate>();
     }

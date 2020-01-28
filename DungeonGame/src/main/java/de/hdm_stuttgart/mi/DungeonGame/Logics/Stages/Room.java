@@ -4,7 +4,7 @@
  * Class for room creation and managing.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-27 / Sascha W.
+ * last edit / by: 2020-01-28 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -98,10 +98,8 @@ public class Room {
                 }
             }
         }
-        if(!(enemies == null)) {
-            for (int enemycount = 0; enemycount < enemies.size(); enemycount++) {
-                room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
-            }
+        for (int entrycount = 0; entrycount < doorsAndStairs.size(); entrycount++) {
+            room[doorsAndStairs.get(entrycount).getCoordinate().getyCoordinate()][doorsAndStairs.get(entrycount).getCoordinate().getxCoordinate()] = doorsAndStairs.get(entrycount).getFieldType();
         }
         if(!(items == null)) {
             for (int itemcount = 0; itemcount < items.size(); itemcount++) {
@@ -111,6 +109,11 @@ public class Room {
         if(!(coins == null)) {
             for (int coinCount = 0; coinCount < coins.size(); coinCount++) {
                 room[coins.get(coinCount).getCoordinate().getyCoordinate()][coins.get(coinCount).getCoordinate().getxCoordinate()] = FieldType.CoinField;
+            }
+        }
+        if(!(enemies == null)) {
+            for (int enemycount = 0; enemycount < enemies.size(); enemycount++) {
+                room[enemies.get(enemycount).GetCoordinate().getyCoordinate()][enemies.get(enemycount).GetCoordinate().getxCoordinate()] = FieldType.Enemy;
             }
         }
         room[Field.getPlayer().GetCoordinate().getyCoordinate()][Field.getPlayer().GetCoordinate().getxCoordinate()] = FieldType.Player;
@@ -123,6 +126,7 @@ public class Room {
     public void checkPlayerField() {
         for(Enemy enemy : enemies) {
             enemy.NextMove();
+            refreshRoom();
         }
         int coinCounter = 0;
         int itemCounter = 0;
@@ -184,23 +188,47 @@ public class Room {
         if(playerTileEquelsEntryTile){
             switch(doorsAndStairs.get(entryCounter).getDirection()) {
                 case Top:
-                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Bottom, true);
+                    if(doorsAndStairs.get(entryCounter).isEntrance()) {
+                        Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(entryCounter).getCoordinate().getxCoordinate(), doorsAndStairs.get(entryCounter).getCoordinate().getyCoordinate() + 1));
+
+                    }else {
+                        entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Bottom, true, FieldType.Door);
+                        Field.setRoom(new Room(Difficulty.Medium, getEntry()));
+                    }
                     break;
                 case Right:
-                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Left, true);
+                    if(doorsAndStairs.get(entryCounter).isEntrance()) {
+                        Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(entryCounter).getCoordinate().getxCoordinate() - 1, doorsAndStairs.get(entryCounter).getCoordinate().getyCoordinate()));
+                    }else {
+                        entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Left, true, FieldType.Door);
+                        Field.setRoom(new Room(Difficulty.Medium, getEntry()));
+                    }
                     break;
                 case Bottom:
-                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Top, true);
+                    if(doorsAndStairs.get(entryCounter).isEntrance()) {
+                        Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(entryCounter).getCoordinate().getxCoordinate(), doorsAndStairs.get(entryCounter).getCoordinate().getyCoordinate() - 1));
+                    }else {
+                        entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Top, true, FieldType.Door);
+                        Field.setRoom(new Room(Difficulty.Medium, getEntry()));
+                    }
                     break;
                 case Left:
-                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Right, true);
+                    if(doorsAndStairs.get(entryCounter).isEntrance()) {
+                        Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(entryCounter).getCoordinate().getxCoordinate() + 1, doorsAndStairs.get(entryCounter).getCoordinate().getyCoordinate()));
+                    }else {
+                        entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.Right, true, FieldType.Door);
+                        Field.setRoom(new Room(Difficulty.Medium, getEntry()));
+                    }
                     break;
                 default:
-                    entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.NotDefined, true);
+                    if(doorsAndStairs.get(entryCounter).isEntrance()) {
+                        Field.getPlayer().SetCoordinate(new Coordinate(doorsAndStairs.get(entryCounter).getCoordinate().getxCoordinate() - 1, doorsAndStairs.get(entryCounter).getCoordinate().getyCoordinate()));
+                    }else {
+                        entry = new Entry(doorsAndStairs.get(entryCounter).getCoordinate(), Directions.NotDefined, true, FieldType.Stairs);
+                        Field.setRoom(new Room(Difficulty.Medium, getEntry()));
+                    }
                     break;
             }
-
-            Field.setRoom(new Room(Difficulty.Medium, getEntry()));
         }else if(playerTileEquelsEnemyTile) {
             while(playerTileEquelsEnemyTile == true) {
                 Field.getPlayer().SetHealthPoints(Field.getPlayer().GetHealthPoints() - 10);
@@ -231,7 +259,6 @@ public class Room {
             }
 
         }
-        //ToDo: An Laras Klassen anpassen
     }
 
 
