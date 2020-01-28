@@ -4,7 +4,7 @@
  * Class for creating potions
  *
  * author: Micha H.
- * last edit / by: 2019-01-22 / Micha H.
+ * last edit / by: 2019-01-28 / Micha H.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors;
 
@@ -53,7 +53,16 @@ public class Potion {
     // ToDo: Javadoc | override??
     public boolean equals(Potion otherPotion) {
 
-        return type == otherPotion.type && value == otherPotion.value;
+        return type == otherPotion.type && value == otherPotion.value &&
+                coordinate.getxCoordinate() == otherPotion.coordinate.getxCoordinate() &&
+                coordinate.getyCoordinate() == otherPotion.coordinate.getyCoordinate();
+
+    }
+
+    @Override
+    public String toString() {
+
+        return "type: " + type + ", value: " + value + ", (" + coordinate.getxCoordinate() + "|" + coordinate.getyCoordinate() + ")";
 
     }
 
