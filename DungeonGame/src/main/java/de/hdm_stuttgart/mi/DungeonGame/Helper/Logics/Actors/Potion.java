@@ -53,7 +53,16 @@ public class Potion {
     // ToDo: Javadoc | override??
     public boolean equals(Potion otherPotion) {
 
-        return type == otherPotion.type && value == otherPotion.value;
+        return type == otherPotion.type && value == otherPotion.value &&
+                coordinate.getxCoordinate() == otherPotion.coordinate.getxCoordinate() &&
+                coordinate.getyCoordinate() == otherPotion.coordinate.getyCoordinate();
+
+    }
+
+    @Override
+    public String toString() {
+
+        return "type: " + type + ", value: " + value + ", (" + coordinate.getxCoordinate() + "|" + coordinate.getyCoordinate() + ")";
 
     }
 

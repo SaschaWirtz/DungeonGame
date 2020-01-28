@@ -19,9 +19,10 @@ public class Inventory {
      * coins - array of the coins. Stores objects of the class Coin. Array size: 100.
      * coinsCounter - variable counts the collected coins. Starts at 0.
      */
-    static private Potion[] potions = new Potion[7];  // ToDo: Array size. | Notiz für mich: 100 Felder und nicht feste Potionplätz + Anzahl, weil vllt auch Potions mit anderen Values möglich, die einen eigenen Platz im Array benötigen.
+    // ToDo: potion/coin overflow!
+    static private Potion[] potions = new Potion[7];
     static private int potionsCounter = 0;
-    static private Coin coins[] = new Coin[100]; // ToDo: Array size
+    static private Coin coins[] = new Coin[100];
     static private int coinsCounter = 0;
 
     /**
