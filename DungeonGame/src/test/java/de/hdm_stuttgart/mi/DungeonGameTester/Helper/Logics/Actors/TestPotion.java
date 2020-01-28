@@ -39,7 +39,7 @@ public class TestPotion {
 
     @Test
     /**
-     * Unit-Test is testing if created potion objects are correctly added to the inventory.
+     * Unit-Test is testing, if created potion objects are correctly added to the inventory.
      */
     public void test_addPotion() {
             Potion potion = new Potion(PotionType.HEALTH, 25, new Coordinate(10, 10));
@@ -61,7 +61,7 @@ public class TestPotion {
 
     @Test
     /**
-     * Unit-Test is testing if removed potion objects (no special order) are correctly removed from the inventory.
+     * Unit-Test is testing, if removed potion objects (no special order) are correctly removed from the inventory.
      */
     public void test_removePotion() {
         test_addPotion();
@@ -96,5 +96,20 @@ public class TestPotion {
             potions = new Potion[7];
         Assert.assertEquals(null, Inventory.getPotions()[0]);
 
+    }
+
+    @Test
+    /**
+     * Unit-Test adds 6 potion to the inventory
+     */
+    public void inventoryOverflow() {
+        Potion potion = new Potion(PotionType.HEALTH, 25, new Coordinate(10, 10));
+        for(int potionAnzahl=0; potionAnzahl<6; potionAnzahl++) {
+            potion.moveInventory();
+        }
+        Assert.assertTrue(Inventory.hasFreeSlot()); // one free slot
+        potion.moveInventory(); // 7th potion.
+        Assert.assertFalse(Inventory.hasFreeSlot()); // no free slot.
+        potion.moveInventory(); // this would be the 8th potion.
     }
 }

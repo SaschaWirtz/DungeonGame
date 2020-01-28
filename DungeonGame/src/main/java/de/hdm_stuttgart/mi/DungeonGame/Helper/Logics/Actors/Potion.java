@@ -46,12 +46,16 @@ public class Potion {
      */
     public void moveInventory() {
 
-        Inventory.addPotion(this);
+        if(Inventory.hasFreeSlot()) {
+            Inventory.addPotion(this);
+        }
 
     }
 
-    // ToDo: Javadoc | override??
-    public boolean equals(Potion otherPotion) {
+    @Override
+    public boolean equals(Object otherPotionObject) {
+
+        Potion otherPotion = (Potion) otherPotionObject;
 
         return type == otherPotion.type && value == otherPotion.value &&
                 coordinate.getxCoordinate() == otherPotion.coordinate.getxCoordinate() &&

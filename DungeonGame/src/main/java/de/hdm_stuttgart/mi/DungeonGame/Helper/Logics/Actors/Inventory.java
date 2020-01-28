@@ -77,6 +77,7 @@ public class Inventory {
     }
 
     /**
+     * ~Inventory overflow locking device~
      * Method checks, if the inventory has a free slot for a potion.
      * @return - true if inventory has a free slot; false if inventory has no free slot.
      */
@@ -111,6 +112,12 @@ public class Inventory {
     static public Potion[] getPotions() {
         return potions;
     }
+
+    /**
+     * Getter for potionsCounter. Only for Unit-Tests
+     * @return potionsCounter - amount of potions.
+     */
+    static public int getPotionsCounter() { return potionsCounter; }
 
     /**
      * Getter for coins
