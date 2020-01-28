@@ -4,7 +4,7 @@
  * Class for creating potions
  *
  * author: Micha H.
- * last edit / by: 2019-01-22 / Micha H.
+ * last edit / by: 2019-01-28 / Micha H.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors;
 

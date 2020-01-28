@@ -4,7 +4,7 @@
  * The test game place
  *
  * author: Micha H.
- * last edit / by: 2019-01-15 / Micha H.
+ * last edit / by: 2019-01-28 / Micha H.
  */
 package de.hdm_stuttgart.mi.DungeonGameTester.Helper.Logics.Actors;
 

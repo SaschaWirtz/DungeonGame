@@ -4,7 +4,7 @@
  * Inventory of the player for items (potions/coins/other items)
  *
  * author: Micha H.
- * last edit / by: 2020-01-29 / Sascha W.
+ * last edit / by: 2020-01-28 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors;
 
@@ -16,13 +16,10 @@ public class Inventory {
     /**
      * potions - array of the type Potion. Stores objects of the class Potion. Array size: 100.
      * potionsCounter - variable counts the collected potions. Starts at 0.
-     * coins - array of the coins. Stores objects of the class Coin. Array size: 100.
      * coinsCounter - variable counts the collected coins. Starts at 0.
      */
-    // ToDo: potion/coin overflow!
     static private Potion[] potions = new Potion[7];
     static private int potionsCounter = 0;
-    static private Coin coins[] = new Coin[100];
     static private int coinsCounter = 0;
 
     /**
@@ -42,8 +39,6 @@ public class Inventory {
      * @param coin - object of the class Coin with the attribute coordinate.
      */
     static public void addCoin(Coin coin) {
-
-        coins[coinsCounter] = coin;
 
         coinsCounter++;
 
@@ -78,6 +73,16 @@ public class Inventory {
         potions = potions_tmp;
 
         potionsCounter--;
+
+    }
+
+    /**
+     * Method checks, if the inventory has a free slot for a potion.
+     * @return - true if inventory has a free slot; false if inventory has no free slot.
+     */
+    static public boolean hasFreeSlot() {
+
+        return potionsCounter < 7;
 
     }
 
