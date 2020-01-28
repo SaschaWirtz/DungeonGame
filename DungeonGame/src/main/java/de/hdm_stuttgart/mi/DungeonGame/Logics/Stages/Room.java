@@ -10,6 +10,7 @@ package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
 //Import statements
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Coin;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Inventory;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Potion;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.*;
@@ -181,7 +182,7 @@ public class Room {
             Field.getInventory().addCoin(coins.get(coinCounter));
             coins.remove(coinCounter);
         }
-        if(playerTileEquelsItemTile){
+        if(playerTileEquelsItemTile && Inventory.hasFreeSlot()){
             Field.getInventory().addPotion(items.get(itemCounter));
             items.remove(itemCounter);
         }
