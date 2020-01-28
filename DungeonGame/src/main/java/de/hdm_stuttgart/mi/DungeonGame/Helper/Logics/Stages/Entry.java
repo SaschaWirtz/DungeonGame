@@ -15,14 +15,24 @@ import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
 
 public class Entry {
 
-    //Attributes
-    //Position of Entry
+    /**
+     * Position of Entry
+     */
     private Directions direction;
-    //Entry or Exit
+
+    /**
+     * Entry or Exit
+     */
     private boolean entrance;
-    //Coordinate of Entry
+
+    /**
+     * Coordinate of Entry
+     */
     private Coordinate coordinate;
 
+    /**
+     * FieldType of Entry (Door or Stairs)
+     */
     private FieldType fieldType;
 
 
@@ -35,32 +45,35 @@ public class Entry {
      * @param entrance is saving if its a entry or a exit
      */
     public Entry(Coordinate coordinate, Directions direction, boolean entrance, FieldType fieldType) {
+        //Creating new Entry with given specifics
         this.coordinate = coordinate;
         this.direction = direction;
         this.entrance = entrance;
         this.fieldType = fieldType;
     }
 
+    //Getter and Setter for Direction
     public Directions getDirection() {
         return direction;
     }
-
     public void setDirection(Directions direction) {
         this.direction = direction;
     }
 
+    //Getter and Setter for Entrance
     public boolean isEntrance() {
         return entrance;
     }
-
     public void setEntrance(boolean entrance) {
         this.entrance = entrance;
     }
 
+    //Getter for Coordinates
     public Coordinate getCoordinate() {
         return coordinate;
     }
 
+    //Getter for FieldType
     public FieldType getFieldType() {
         return fieldType;
     }

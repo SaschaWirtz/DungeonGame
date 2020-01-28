@@ -10,7 +10,7 @@ public class TestActor {
     @Test public void testConstructor(){
         Actor a=new Actor();
         Assert.assertEquals(new Coordinate(0,0),a.GetCoordinate());
-        Assert.assertEquals(0,a.GetHealthPoints());
+        Assert.assertEquals(100,a.GetHealthPoints());
         Assert.assertEquals(0,a.GetAttack());
         Assert.assertEquals(0,a.GetDefense());
         Assert.assertEquals(0,a.GetSpeed());
@@ -25,8 +25,8 @@ public class TestActor {
     @Test public void testAddHealthPoints(){
         Actor a=new Actor();
         a.AddHealthPoints(100);
-        Assert.assertEquals(100,a.GetHealthPoints());
+        Assert.assertEquals(200,a.GetHealthPoints());
         a.AddHealthPoints(-20);
-        Assert.assertEquals(80 ,a.GetHealthPoints());
+        Assert.assertEquals(180 ,a.GetHealthPoints());
     }
 }

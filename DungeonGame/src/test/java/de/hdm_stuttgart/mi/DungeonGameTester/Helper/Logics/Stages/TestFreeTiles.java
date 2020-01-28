@@ -9,34 +9,34 @@
 package de.hdm_stuttgart.mi.DungeonGameTester.Helper.Logics.Stages;
 
 //Import statements
-
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Coordinate;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.CreateWallAndFloor;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.Entry;
-import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.PutEntryAndExit;
-import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.Directions;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages.FreeTiles;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.util.ArrayList;
 
 /**
- * JUnitTest for Entry and Exit spawns.
+ * JUnitTest for FreeTiles detection
  */
-public class TestPutEntryAndExit {
+public class TestFreeTiles {
 
-    //Are at least one entrance and one exit in the room
+    // A five by five field has 9 free tiles
     @Test
-    public void atLeastOneExitAndEntrence() {
-        FieldType[][] fieldType = new FieldType[10][10];
+    public void nineFreeTilesInAFiveByFiveField() {
+        FieldType[][] fieldType = new FieldType[5][5];
         new CreateWallAndFloor(fieldType);
-        new PutEntryAndExit(new Entry(new Coordinate(1,0), Directions.Top, true, FieldType.Door), fieldType, new ArrayList<>());
-        int doorCounter = 0;
+        ArrayList<Coordinate> freeTiles = FreeTiles.freeTiles(fieldType);
+        int floorCounter = 0;
         for(int i = 0; i < fieldType.length; i++) {
             for(int z = 0; z < fieldType[0].length; z++) {
-                doorCounter++;
+                if(fieldType[i][z] == FieldType.Floor) {
+                    floorCounter++;
+                }
             }
         }
-        Assert.assertTrue(doorCounter > 1);
+        Assert.assertTrue(floorCounter == 9);
     }
 }
