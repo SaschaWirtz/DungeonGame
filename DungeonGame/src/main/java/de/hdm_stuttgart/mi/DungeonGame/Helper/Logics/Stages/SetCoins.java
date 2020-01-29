@@ -22,13 +22,25 @@ public class SetCoins {
      * @return Coinlist
      */
     public static ArrayList fillCoinList(FieldType[][] room){
+
+        /**
+         * Initialise a list to keep count over every coin
+         */
         ArrayList<Coin> coins = new ArrayList<>();
+
+        /**
+         * ArrayList of all free Tiles in the room
+         */
         ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
+
+        //Create coins in an appropriate amount and add them to the coin list
         for(int coincount = 0; coincount < (Math.random() * (FreeTiles.freeTiles(room).size() / 20)); coincount++) {
             int coinCoordinate = (int) (Math.random() * availableTiles.size());
             coins.add(new Coin(availableTiles.get(coinCoordinate)));
             availableTiles.remove(coinCoordinate);
         }
+
+        //Return list of coins
         return coins;
     }
 }
