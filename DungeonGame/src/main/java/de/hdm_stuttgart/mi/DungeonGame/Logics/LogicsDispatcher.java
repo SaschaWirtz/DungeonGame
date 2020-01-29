@@ -113,6 +113,7 @@ public class LogicsDispatcher {
                 //back to menu
                 field = null;
                 Field.resetField();
+                Inventory.reset();
                 mainDispatcher.setState(ApplicationState.MainMenu);
             } else if (KEY_INPUT == KeyCode.ButtonW.getValue()) {
                 //move up
@@ -208,6 +209,7 @@ public class LogicsDispatcher {
                 //game over
                 field = null;
                 Field.resetField();
+                Inventory.reset();
                 mainDispatcher.setState(ApplicationState.GameOver);
             }
         }

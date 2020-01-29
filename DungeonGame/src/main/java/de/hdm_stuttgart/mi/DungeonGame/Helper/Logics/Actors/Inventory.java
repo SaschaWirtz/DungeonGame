@@ -4,7 +4,7 @@
  * Inventory of the player for items (potions/coins/other items)
  *
  * author: Micha H.
- * last edit / by: 2020-01-28 / Sascha W.
+ * last edit / by: 2020-01-29 / Micha H.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors;
 
@@ -84,6 +84,14 @@ public class Inventory {
     static public boolean hasFreeSlot() {
 
         return potionsCounter < 7;
+
+    }
+
+    static public void reset() {
+
+        potions = new Potion[7];
+        potionsCounter = 0;
+        coinsCounter = 0;
 
     }
 
