@@ -2,7 +2,7 @@
   Maven project configuration file containing project information and dependencies.
 
   author: Moritz W.
-  last edit / by: 2020-01-28 / Andreas G.
+  last edit / by: 2020-01-29 / Sascha W.
 -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -11,7 +11,7 @@
 
   <groupId>de.hdm_stuttgart.mi.DungeonGame</groupId>
   <artifactId>DungeonGame</artifactId>
-  <version>0.9-BETA</version>
+  <version>0.9.1-BETA</version>
   <packaging>jar</packaging>
 
   <name>DungeonGame</name>

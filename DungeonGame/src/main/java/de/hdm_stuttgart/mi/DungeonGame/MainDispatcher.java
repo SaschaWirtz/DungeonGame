@@ -114,6 +114,9 @@ public class MainDispatcher {
         } else if (state == ApplicationState.MainMenu) {
             //Printing the graphics of main menu
             graphicsDispatcher.triggerMainMenuRenderer(items.get(), selected.get());
+        } else if (state == ApplicationState.Field) {
+            //Dispatch initial field
+            this.dispatchField(-1);
         }
     }
 
