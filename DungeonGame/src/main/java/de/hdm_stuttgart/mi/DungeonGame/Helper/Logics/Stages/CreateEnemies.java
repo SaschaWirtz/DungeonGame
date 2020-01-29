@@ -4,7 +4,7 @@
  * Spawn Enemies.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-28 / Sascha W.
+ * last edit / by: 2020-01-29 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -22,14 +22,11 @@ public class CreateEnemies {
      * @return Enemylist
      */
     public static ArrayList fillEnemyList(FieldType[][] room){
-        /**
-         * Initialise a list to keep count over every enemy
-         */
+
+        //Initialise a list to keep count over every enemy
         ArrayList<Enemy> enemies = new ArrayList<>();
 
-        /**
-         * ArrayList of all free Tiles in the room
-         */
+        //ArrayList of all free Tiles in the room
         ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
 
         //Create enemies in an appropriate amount and add them to the enemy list
