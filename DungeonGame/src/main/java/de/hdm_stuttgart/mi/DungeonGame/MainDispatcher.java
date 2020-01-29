@@ -4,7 +4,7 @@
  * Main dispatcher controlling and triggering the rendering processes and logics processes
  *
  * author: Andreas G.
- * last edit / by: 2020-01-25 / Andreas G.
+ * last edit / by: 2020-01-29 / Lara B.
  */
 package de.hdm_stuttgart.mi.DungeonGame;
 
@@ -12,7 +12,11 @@ package de.hdm_stuttgart.mi.DungeonGame;
 import de.hdm_stuttgart.mi.DungeonGame.Graphics.GraphicsDispatcher;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Enums.ApplicationState;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Enums.KeyCode;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Inventory;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Actors.Player;
 import de.hdm_stuttgart.mi.DungeonGame.Logics.LogicsDispatcher;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
+
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -54,23 +58,24 @@ public class MainDispatcher {
     public boolean dispatch(final int KEY_INPUT) {
         //Checking the terminate key event
         if (KEY_INPUT == KeyCode.ButtonESC.getValue()) {
-            if (state == ApplicationState.Field || state == ApplicationState.Fight) {
-                //Go back to main menu
-                //Changing the current state to main menu
-                state = ApplicationState.MainMenu;
-
-                //Initially handle the main menu
-                dispatchMainMenu(-1);
-
-                return true;
-            } else {
+            if (state == ApplicationState.MainMenu) {
                 //Please close the application
                 return false;
+            } else {
+                //state related dispatching process start
+                if (state == ApplicationState.Field) {
+                    dispatchField(KEY_INPUT);
+                } else if (state == ApplicationState.Fight) {
+                    //TODO: for future implementations of fight
+                }
+                return true;
             }
         } else {
             //Trigger the correct dispatch process
             if (state == ApplicationState.MainMenu) {
                 dispatchMainMenu(KEY_INPUT);
+            } else if (state == ApplicationState.Field) {
+                dispatchField(KEY_INPUT);
             }
 
             //Check if state has changed to PendingExit after dispatching
@@ -86,6 +91,8 @@ public class MainDispatcher {
 
     /**
      * Method dispatching the main menu processes
+     *
+     * @param KEY_INPUT current user input
      */
     public void dispatchMainMenu(final int KEY_INPUT) {
         //Get reference types for logics dispatcher
@@ -107,6 +114,40 @@ public class MainDispatcher {
         } else if (state == ApplicationState.MainMenu) {
             //Printing the graphics of main menu
             graphicsDispatcher.triggerMainMenuRenderer(items.get(), selected.get());
+        } else if (state == ApplicationState.Field) {
+            //Dispatch initial field
+            this.dispatchField(-1);
+        }
+    }
+
+    /**
+     * Method dispatching the field processes
+     *
+     * @param KEY_INPUT current user input
+     */
+    public void dispatchField(final int KEY_INPUT) {
+        //Get reference types for logics dispatcher
+        AtomicReference<FieldType[][]> room = new AtomicReference<FieldType[][]>(null);
+        AtomicReference<Inventory> inventory = new AtomicReference<Inventory>(null);
+        AtomicReference<Player> player = new AtomicReference<Player>(null);
+
+        //Handling the logic of field
+        logicsDispatcher.dispatchField(this, room, inventory, player, KEY_INPUT);
+
+        if (state == ApplicationState.Field) {
+            //Render the field
+            graphicsDispatcher.triggerFieldRenderer(room.get(), inventory.get(), player.get());
+
+        } else if (state == ApplicationState.MainMenu) {
+            //Printing the graphics of main menu
+            this.dispatchMainMenu(-1);
+        } else if (state == ApplicationState.GameOver) {
+            //graphics of game over
+            graphicsDispatcher.triggerGameOverRenderer();
+            //set to main menu
+            state = ApplicationState.MainMenu;
+            //Printing the graphics of main menu
+            this.dispatchMainMenu(-1);
         }
     }
 

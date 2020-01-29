@@ -4,13 +4,17 @@
  * Main class dispatching all the logics processes
  *
  * author: Andreas G.
- * last edit / by: 2020-01-25 / Andreas G.
+ * last edit / by: 2020-01-29 / Lara B.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics;
 
 //Import statements
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Enums.ApplicationState;
 import de.hdm_stuttgart.mi.DungeonGame.Helper.Enums.KeyCode;
+import de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Actors.Inventory;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Actors.Player;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Enum.FieldType;
+import de.hdm_stuttgart.mi.DungeonGame.Logics.Stages.Field;
 import de.hdm_stuttgart.mi.DungeonGame.MainDispatcher;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -22,6 +26,11 @@ public class LogicsDispatcher {
      * The property storing the main menu instance
      */
     private MainMenu mainMenu;
+
+    /**
+     * The property storing the field instance
+     */
+    private Field field;
 
     /**
      * Constructor for this class
@@ -76,6 +85,130 @@ public class LogicsDispatcher {
             if (mainMenu.getStartGameState()) {
                 mainDispatcher.setState(ApplicationState.Field);
                 mainMenu = null;
+            }
+        }
+    }
+
+    /**
+     * Method initializing field and handling the field logic processes
+     *
+     * @param mainDispatcher connects graphicsDispatcher and logicsDispatcher
+     * @param room forwards the current room
+     * @param inventory forwards the current inventory
+     * @param player forwards the current player
+     * @param KEY_INPUT works with user input
+     */
+    public void dispatchField(MainDispatcher mainDispatcher, AtomicReference<FieldType[][]> room, AtomicReference<Inventory> inventory, AtomicReference<Player> player, final int KEY_INPUT) {
+
+        //creates instance if not initialized
+        if (field == null) {
+            field = new Field();
+
+            room.set(field.getRoom().getRoom());
+            inventory.set(field.getInventory());
+            player.set(field.getPlayer());
+        } else {
+
+            if (KEY_INPUT == KeyCode.ButtonESC.getValue()) {
+                //back to menu
+                field = null;
+                Field.resetField();
+                mainDispatcher.setState(ApplicationState.MainMenu);
+            } else if (KEY_INPUT == KeyCode.ButtonW.getValue()) {
+                //move up
+                field.getPlayer().MoveUp();
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.ButtonA.getValue()) {
+                //move left
+                field.getPlayer().MoveLeft();
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.ButtonS.getValue()) {
+                //move down
+                field.getPlayer().MoveDown();
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.ButtonD.getValue()) {
+                //move right
+                field.getPlayer().MoveRight();
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.Button1.getValue()) {
+                //use item 1
+                field.getInventory().usePotion(field.getInventory().getPotions()[0]);
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.Button2.getValue()) {
+                //use item 2
+                field.getInventory().usePotion(field.getInventory().getPotions()[1]);
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.Button3.getValue()) {
+                //use item 3
+                field.getInventory().usePotion(field.getInventory().getPotions()[2]);
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.Button4.getValue()) {
+                //use item 4
+                field.getInventory().usePotion(field.getInventory().getPotions()[3]);
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.Button5.getValue()) {
+                //use item 5
+                field.getInventory().usePotion(field.getInventory().getPotions()[4]);
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.Button6.getValue()) {
+                //use item 6
+                field.getInventory().usePotion(field.getInventory().getPotions()[5]);
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            } else if (KEY_INPUT == KeyCode.Button7.getValue()) {
+                //use item 7
+                field.getInventory().usePotion(field.getInventory().getPotions()[6]);
+                field.getRoom().checkPlayerField();
+
+                room.set(field.getRoom().getRoom());
+                inventory.set(field.getInventory());
+                player.set(field.getPlayer());
+            }
+
+            if (field.getPlayer().GetHealthPoints() <= 0) {
+                //game over
+                field = null;
+                Field.resetField();
+                mainDispatcher.setState(ApplicationState.GameOver);
             }
         }
     }

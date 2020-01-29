@@ -4,7 +4,7 @@
  * All FreeTiles.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-15 / Sascha W.
+ * last edit / by: 2020-01-29 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -21,7 +21,11 @@ public class FreeTiles {
      * @return List of all FreeTiles
      */
     public static ArrayList<Coordinate> freeTiles(FieldType[][] room) {
+
+        //List to save all Tiles which are a FloorTile
         ArrayList<Coordinate> freeSpace = new ArrayList<Coordinate>();
+
+        //Go through the room array ant count all Tiles which are of FieldType.FLOOR
         for(int row = 1; row < room.length - 1; row++) {
             for(int column = 1; column < room[0].length - 1; column++) {
                 if (room[row][column] == FieldType.Floor) {
@@ -29,6 +33,8 @@ public class FreeTiles {
                 }
             }
         }
+
+        //Return List of all free tiles
         return freeSpace;
     }
 }

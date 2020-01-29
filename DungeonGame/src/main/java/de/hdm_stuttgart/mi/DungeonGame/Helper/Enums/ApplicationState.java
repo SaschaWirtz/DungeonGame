@@ -4,7 +4,7 @@
  * Enum containing all the possible states of this application
  *
  * author: Andreas G.
- * last edit / by: 2020-01-25 / Andreas G.
+ * last edit / by: 2020-01-29 / Lara B.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Enums;
 
@@ -18,5 +18,6 @@ public enum ApplicationState {
     Field,
     Fight,
     EasterEgg,
-    PendingExit
+    PendingExit,
+    GameOver
 }

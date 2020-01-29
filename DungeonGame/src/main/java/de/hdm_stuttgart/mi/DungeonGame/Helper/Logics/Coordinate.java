@@ -4,12 +4,23 @@
  * Class to create Coordinate objects.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-24 / Moritz W.
+ * last edit / by: 2020-01-29 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics;
 
+/**
+ * Class to create coordinate objects
+ */
 public class Coordinate {
+
+    /**
+     * X-Coordinate of Coordinate object
+     */
     private int xCoordinate;
+
+    /**
+     * Y-Coordinate of Coordinate object
+     */
     private int yCoordinate;
 
     /**
@@ -51,12 +62,30 @@ public class Coordinate {
         this.yCoordinate = yCoordinate;
     }
 
+    /**
+     * Change X-Coordinate
+     *
+     * @param add to X-Coordinate
+     */
     public void addxCoordinate(int add){
         xCoordinate+=add;
     }
+
+    /**
+     * Change Y-Coordinate
+     *
+     * @param add to Y-Coordinate
+     */
     public void addyCoordinate(int add){
         yCoordinate +=add;
     }
+
+    /**
+     * Equals method for logic uses
+     *
+     * @param obj to compare
+     * @return is equal
+     */
     @Override
     public boolean equals(Object obj) {
         Coordinate c=(Coordinate)obj;
