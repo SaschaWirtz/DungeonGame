@@ -29,8 +29,7 @@ public class Fight {
         System.out.println();
 
         //If the enemy is faster than the player, he will attack first
-        if (player.getSpeed() < enemy.getSpeed()) {
-            System.out.println(enemy.getName() + " is faster than " + player.getName() + "!");
+        if (player.GetSpeed() < enemy.GetSpeed()) {
             attack(enemy, player, false);
         }
         boolean defenseEnemy = false;
@@ -54,10 +53,8 @@ public class Fight {
                         wrongInput = false; break;
                     case 1:
                         defensePlayer = true;
-                        System.out.println(player.getName() + " defends himself.");
                         wrongInput = false; break;
                     case 2:
-                        printFightStats(player, enemy);
                         wrongInput = false; break;
                     default:
                         System.out.println("Wrong Input! Try again."); break;
@@ -65,7 +62,7 @@ public class Fight {
             }
 
             //If the enemy has 0 health points, the player wins the fight
-            if (enemy.getHealth() <= 0) {
+            if (enemy.GetHealthPoints() <= 0) {
                 again = false;
                 System.out.println("-- You won! --");
             }
@@ -82,14 +79,13 @@ public class Fight {
                     attack(enemy, player, defensePlayer); break;
                 case 1:
                     defenseEnemy = true;
-                    System.out.println(enemy.getName() + " defends himself."); break;
+                     break;
                 default: break;
             }
 
             //If the player has 0 health points, the player loses the fight
-            if (player.getHealth() <= 0) {
+            if (player.GetHealthPoints() <= 0) {
                 again = false;
-                System.out.println("-- Game Over! --");
             }
 
         }
@@ -103,9 +99,9 @@ public class Fight {
      * @param attacked
      */
     private static void attack(Actor attacker, Actor attacked, boolean defending) {
-        int attack = attacker.getAttack();
-        int defense = attacked.getDefense();
-        int health = attacked.getHealth();
+        int attack = attacker.GetAttack();
+        int defense = attacked.GetDefense();
+        int health = attacked.GetHealthPoints();
 
         if (defending) {
             attack = (attack - (((defense * 2) / 100) * attack));
@@ -113,19 +109,7 @@ public class Fight {
             attack = (attack - ((defense / 100) * attack));
         }
 
-        attacked.setHealth(health - attack);
-        System.out.println(attacker.getName() + " attacks " + attacked.getName() + "!");
-        System.out.println(attacked.getName() + " loses " + attack + " health points.");
-        System.out.println();
-    }
-
-    public static void printFightStats(Actor player, Actor enemy) {
-        System.out.println("++ Current Fight Stats ++");
-        System.out.println(player.getName() + ", " + "Health: " + player.getHealth()
-                + ", Attack: " + player.getAttack() + ", " + "Defense: " + player.getDefense());
-        System.out.println(enemy.getName() + ", " + "Health: " + enemy.getHealth()
-                + ", Attack: " + enemy.getAttack() + ", " + "Defense: " + enemy.getDefense());
-        System.out.println();
+        //attacked.SetHealth(health - attack);
     }
 
 }

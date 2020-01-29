@@ -4,7 +4,7 @@
  * Main class for Room and Player managing.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-28 / Sascha W.
+ * last edit / by: 2020-01-29 / Lara B.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Logics.Stages;
 
@@ -38,6 +38,16 @@ public class Field {
 
     public static void setRoom(Room room) {
         Field.room = room;
+    }
+
+    /**
+     * resetting all field related properties
+     */
+    public static void resetField() {
+        player = new Player(new Coordinate(1,1));
+        inventory = new Inventory();
+        room = new Room(Difficulty.Medium, new Entry(new Coordinate(1, 1), Directions.Top, Boolean.TRUE, FieldType.Door) );
+
     }
 }
 
