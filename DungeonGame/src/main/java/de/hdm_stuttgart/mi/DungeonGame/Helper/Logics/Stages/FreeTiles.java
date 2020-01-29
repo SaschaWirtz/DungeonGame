@@ -21,9 +21,8 @@ public class FreeTiles {
      * @return List of all FreeTiles
      */
     public static ArrayList<Coordinate> freeTiles(FieldType[][] room) {
-        /**
-         * List to save all Tiles which are a FloorTile
-         */
+
+        //List to save all Tiles which are a FloorTile
         ArrayList<Coordinate> freeSpace = new ArrayList<Coordinate>();
 
         //Go through the room array ant count all Tiles which are of FieldType.FLOOR

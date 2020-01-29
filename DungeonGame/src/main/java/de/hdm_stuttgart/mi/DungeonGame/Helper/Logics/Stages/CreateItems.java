@@ -4,7 +4,7 @@
  * Class to spawn Items.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-28 / Sascha W.
+ * last edit / by: 2020-01-29 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -23,14 +23,11 @@ public class CreateItems {
      * @return Itemlist
      */
     public static ArrayList fillItemList(FieldType[][] room){
-        /**
-         * Initialise a list to keep count over every enemy
-         */
+
+        //Initialise a list to keep count over every enemy
         ArrayList<Potion> items = new ArrayList<>();
 
-        /**
-         * ArrayList of all free Tiles in the room
-         */
+        //ArrayList of all free Tiles in the room
         ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
 
         //Create items in an appropriate amount and add them to the item list

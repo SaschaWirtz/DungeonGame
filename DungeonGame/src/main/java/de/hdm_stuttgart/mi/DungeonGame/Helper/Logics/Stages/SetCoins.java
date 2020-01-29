@@ -4,7 +4,7 @@
  * Class to spawn Coins.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-27 / Sascha W.
+ * last edit / by: 2020-01-29 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics.Stages;
 
@@ -23,14 +23,10 @@ public class SetCoins {
      */
     public static ArrayList fillCoinList(FieldType[][] room){
 
-        /**
-         * Initialise a list to keep count over every coin
-         */
+        //Initialise a list to keep count over every coin
         ArrayList<Coin> coins = new ArrayList<>();
 
-        /**
-         * ArrayList of all free Tiles in the room
-         */
+        //ArrayList of all free Tiles in the room
         ArrayList<Coordinate> availableTiles = FreeTiles.freeTiles(room);
 
         //Create coins in an appropriate amount and add them to the coin list

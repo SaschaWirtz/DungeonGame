@@ -79,18 +79,14 @@ public class Room {
      */
     public Room(Difficulty difficulty, Entry entry) {
 
-        /**
-         * Feeding constructor needed infos
-         */
+        //Feeding constructor needed infos
         this.DIFFICULTY = difficulty;
         this.entry = entry;
 
         //Fill room-array with simple wall and floor
         new CreateWallAndFloor(room);
 
-        /**
-         * Selection of roomtypes.
-         */
+        //Selection of roomtypes
         if(ROOMTYPE <= 100 && ROOMTYPE >= 0) {
             //Adding entry and exit
             new PutEntryAndExit(entry, room, doorsAndStairs);
@@ -174,24 +170,16 @@ public class Room {
             refreshRoom();
         }
 
-        /**
-         * Integer to keep track of the coin which is used
-         */
+        //Integer to keep track of the coin which is used
         int coinCounter = 0;
 
-        /**
-         * Integer to keep track of the item which is used
-         */
+        //Integer to keep track of the item which is used
         int itemCounter = 0;
 
-        /**
-         * Integer to keep track of the entry which is used
-         */
+        //Integer to keep track of the entry which is used
         int entryCounter = 0;
 
-        /**
-         * Integer to keep track of the enemy which is used
-         */
+        //Integer to keep track of the enemy which is used
         int enemyConter = 0;
 
         //Checks if enemy stands on a coin

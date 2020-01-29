@@ -4,7 +4,7 @@
  * Class to create Coordinate objects.
  *
  * author: Sascha W.
- * last edit / by: 2020-01-28 / Sascha W.
+ * last edit / by: 2020-01-29 / Sascha W.
  */
 package de.hdm_stuttgart.mi.DungeonGame.Helper.Logics;
 
